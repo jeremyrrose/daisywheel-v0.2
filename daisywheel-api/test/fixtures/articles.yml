@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  dek: MyString
+  content: MyString
+  image: MyString
+  caption: MyString
+  credit: MyString
+  url: MyString
+  published: false
+  static: false
+
+two:
+  title: MyString
+  dek: MyString
+  content: MyString
+  image: MyString
+  caption: MyString
+  credit: MyString
+  url: MyString
+  published: false
+  static: false
