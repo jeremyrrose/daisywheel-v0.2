@@ -15,6 +15,8 @@ class ArticlesController < ApplicationController
 
   # POST /articles
   def create
+    puts article_params
+    puts 'halp'
     @article = Article.new(article_params)
 
     if @article.save
@@ -46,6 +48,6 @@ class ArticlesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def article_params
-      params.require(:article).permit(:title, :dek, :content, :image, :caption, :credit, :url, :published, :static)
+      params.require(:article).permit(:author_id, :section_id, :title, :dek, :content, :image, :caption, :credit, :url, :published, :static)
     end
 end
