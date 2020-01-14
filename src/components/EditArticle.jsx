@@ -1,6 +1,6 @@
 import React from 'react';
 import ArticleForm from './shared/ArticleForm.jsx';
-import { createArticle } from '../services/ApiMethods.js';
+import { updateArticle } from '../services/ApiMethods.js'
 
 class NewArticle extends React.Component {
     constructor(props) {
@@ -10,7 +10,47 @@ class NewArticle extends React.Component {
     }
 
     componentDidMount = async () => {
+        this.getArticle(this.props.match.params.id);
       }
+    
+    getArticle = async (id) => {
+        fetch(`http://localhost:3000/articles/${id}`)
+        .then(response => response.json())
+        .then(({
+            id,
+            title,
+            dek,
+            content,
+            caption,
+            credit,
+            url,
+            published,
+            updated_at,
+            section_id,
+            author_id
+        }) => this.setState({
+                id,
+                title,
+                dek,
+                content,
+                caption,
+                credit,
+                url,
+                published,
+                updated_at,
+                section_id,
+                author_id
+            }))
+      }
+      
+    changeHandler = (e) => {
+          this.setState({ [e.target.name]: e.target.value })
+      }
+
+    wysiwygHandler = (name) => {
+        const elem = document.getElementById(`${name}`)
+        this.setState({ [name]: elem.innerHTML })
+    }
 
     buildArticle = (e) => {
         e.preventDefault();
@@ -26,16 +66,7 @@ class NewArticle extends React.Component {
             section_id: this.state.section_id,
             author_id: this.state.author_id
         }
-        createArticle(articleData);
-    }
-    
-    changeHandler = (e) => {
-          this.setState({ [e.target.name]: e.target.value })
-      }
-
-    wysiwygHandler = (name) => {
-        const elem = document.getElementById(`${name}`)
-        this.setState({ [name]: elem.innerHTML })
+        updateArticle(this.props.match.params.id, articleData);
     }
 
     render () {

@@ -44,9 +44,7 @@ const ArticleForm = ({
                     <button name="changePhoto">Change photo</button>
                 </div>
             </div>
-            <div id="content" contentEditable="true" onBlur={() => wysiwygHandler('content')}>
-                {content}
-            </div>
+            <div id="content" contentEditable="true" onBlur={() => wysiwygHandler('content')} dangerouslySetInnerHTML={{__html: content}} />
             <div className="submitRow">
                 <button name="draft" label="Draft" />
                 <button name="published" label="Publish" />

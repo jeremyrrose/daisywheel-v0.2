@@ -11,6 +11,24 @@ export const getArticle = async (id) => {
   }
 }
 
+export const createArticle = async (articleData) => {
+  try {
+      const response = await Api.post('/articles', articleData);
+      return response
+  } catch (error) {
+      console.error(error)
+  }
+}
+
+export const updateArticle = async (id, articleData) => {
+  try {
+    const response = await Api.put(`/articles/${id}`, articleData);
+    return response
+  } catch (error) {
+      console.error(error)
+  }
+}
+
 // export const getAdditionalMovies = async page => {
 //   try {
 //     const resp = await Api.get(`/discover/movie/?page=${page}&${apiKey}`)
