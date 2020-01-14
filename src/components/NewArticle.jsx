@@ -6,6 +6,7 @@ class NewArticle extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            published: false
         }
     }
 
@@ -21,12 +22,22 @@ class NewArticle extends React.Component {
             // caption: this.state.caption,
             // credit: this.state.credit,
             // url: this.state.url,
-            // published: this.state.published,
+            published: this.state.published,
             // updated_at: this.state.updated_at,
             section_id: this.state.section_id,
             author_id: this.state.author_id
         }
         createArticle(articleData);
+    }
+
+    toggler = (e, componentName) => {
+        e.preventDefault();
+        if ( componentName === 'draft' && this.state.published === true ) {
+            this.setState({published: false});
+        }
+        if ( componentName === 'publish' && this.state.published === false ) {
+            this.setState({published: true});
+        }
     }
     
     changeHandler = (e) => {
@@ -68,6 +79,7 @@ class NewArticle extends React.Component {
                 section_id={section_id}
                 author_id={author_id}
                 onChange={this.changeHandler}
+                toggle={this.toggler}
                 onSubmit={this.buildArticle}
                 wysiwygHandler={this.wysiwygHandler}
             />

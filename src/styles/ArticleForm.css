@@ -1,0 +1,102 @@
+.articleForm {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: stretch;
+}
+
+.articleForm div {
+    position: relative;
+}
+
+.articleForm label {
+    position: absolute;
+    top: -16px;
+    left: 12px;
+    padding: 0 6px;
+    background: #ffffff;
+    z-index: 10;
+}
+
+.articleForm h2 {
+    font-size: 48px;
+    margin: 0px;
+}
+
+.articleForm input, .articleForm select, .articleForm button {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    background: transparent;
+    padding: 8px 14px;
+    border: 1px solid;
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
+
+.articleForm .wideInput, .row4 div, .heroColumn div {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.articleForm .row1, .articleForm .row4 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.articleForm .row1 div {
+    min-width: 50%;
+}
+
+.articleForm .row1 select {
+    width: 100%;
+}
+
+.articleForm .row4 select {
+    min-width: 40%;
+}
+
+.articleForm .heroRow {
+    display: flex;
+}
+
+.articleForm .heroRow img {
+    min-width: 360px;
+    flex: 1;
+}
+
+.articleForm .heroRow .heroColumn {
+    flex: 9;
+    display: flex;
+    flex-direction: column;
+}
+
+.articleForm .heroRow .heroColumn button {
+    min-width: 24%;
+    align-self: flex-start;
+}
+
+.articleForm #content {
+    font-family: 'Roboto', sans-serif;
+    text-align: left;
+    font-size: 18px;
+    padding: 20px;
+    border: 1px solid;
+    border-radius: 12px;
+    min-height: 40vh;
+    flex-grow: 10;
+    margin-bottom: 30px;
+    overflow-x: hidden;
+}
+
+.articleForm .submitRow {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.articleForm .submitRow button, .articleForm .submitRow input {
+    width: 16%;
+    margin: 0 0 0 30px;
+}

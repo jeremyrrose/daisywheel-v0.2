@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+
+/* NEW ENTRIES */
+@import url('https://fonts.googleapis.com/css?family=EB+Garamond|Rubik&display=swap');
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'EB Garamond', serif;
+  letter-spacing: .06em;
+}

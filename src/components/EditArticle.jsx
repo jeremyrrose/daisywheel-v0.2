@@ -2,7 +2,7 @@ import React from 'react';
 import ArticleForm from './shared/ArticleForm.jsx';
 import { updateArticle } from '../services/ApiMethods.js'
 
-class NewArticle extends React.Component {
+class EditArticle extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -47,6 +47,16 @@ class NewArticle extends React.Component {
           this.setState({ [e.target.name]: e.target.value })
       }
 
+    toggler = (e, componentName) => {
+        e.preventDefault();
+        if ( componentName === 'draft' && this.state.published === true ) {
+            this.setState({published: false});
+        }
+        if ( componentName === 'publish' && this.state.published === false ) {
+            this.setState({published: true});
+        }
+    }
+
     wysiwygHandler = (name) => {
         const elem = document.getElementById(`${name}`)
         this.setState({ [name]: elem.innerHTML })
@@ -61,7 +71,7 @@ class NewArticle extends React.Component {
             // caption: this.state.caption,
             // credit: this.state.credit,
             // url: this.state.url,
-            // published: this.state.published,
+            published: this.state.published,
             // updated_at: this.state.updated_at,
             section_id: this.state.section_id,
             author_id: this.state.author_id
@@ -99,6 +109,7 @@ class NewArticle extends React.Component {
                 section_id={section_id}
                 author_id={author_id}
                 onChange={this.changeHandler}
+                toggle={this.toggler}
                 onSubmit={this.buildArticle}
                 wysiwygHandler={this.wysiwygHandler}
             />
@@ -106,4 +117,4 @@ class NewArticle extends React.Component {
     }
 }
 
-export default NewArticle;
+export default EditArticle;
