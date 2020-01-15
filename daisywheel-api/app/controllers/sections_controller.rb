@@ -10,7 +10,9 @@ class SectionsController < ApplicationController
 
   # GET /sections/1
   def show
-    render json: @section
+    @section = Section.find(params[:id])
+    @top_story = Article.find_by_id(@section.top_story)
+    render json: { section: @section, top_story_object: @top_story }
   end
 
   # POST /sections

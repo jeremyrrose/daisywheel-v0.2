@@ -6160,3 +6160,311 @@ Processing by ArticlesController#show as */*
 Completed 200 OK in 4ms (Views: 0.7ms | ActiveRecord: 0.6ms | Allocations: 851)
 
 
+Started GET "/edit/articles/" for ::1 at 2020-01-15 12:27:05 -0500
+  [1m[35m (16.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (0.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+  [1m[36mAuthor Load (1.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+  [1m[36mCACHE Author Load (1.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+  [1m[36mCACHE Author Load (0.2ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+Completed 200 OK in 200ms (Views: 123.4ms | ActiveRecord: 26.5ms | Allocations: 26760)
+
+
+Started GET "/articles/5" for ::1 at 2020-01-15 12:27:47 -0500
+Processing by ArticlesController#show as */*
+  Parameters: {"id"=>"5"}
+Started GET "/edit/articles/broken.jpg" for 127.0.0.1 at 2020-01-15 12:27:47 -0500
+  [1m[36mArticle Load (4.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:46:in `set_article'
+Completed 200 OK in 16ms (Views: 1.5ms | ActiveRecord: 4.3ms | Allocations: 1626)
+
+
+Processing by Edit::ArticlesController#show as JPEG
+  Parameters: {"id"=>"broken"}
+  [1m[36mArticle Load (0.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:46:in `set_article'
+Started GET "/magazines/1" for ::1 at 2020-01-15 12:27:47 -0500
+Completed 404 Not Found in 55ms (ActiveRecord: 1.1ms | Allocations: 1092)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Article with 'id'=broken):
+  
+app/controllers/edit/articles_controller.rb:46:in `set_article'
+Processing by MagazinesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMagazine Load (3.9ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:44:in `set_magazine'
+Completed 200 OK in 141ms (Views: 1.0ms | ActiveRecord: 12.9ms | Allocations: 8766)
+
+
+Started GET "/edit/articles/" for ::1 at 2020-01-15 12:27:58 -0500
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (0.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+  [1m[36mAuthor Load (2.5ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+Completed 200 OK in 113ms (Views: 108.2ms | ActiveRecord: 3.7ms | Allocations: 9910)
+
+
+  [1m[35m (23.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5747818275467606310)[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddFeaturedToSection (20200115174909)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (103.9ms)[0m  [1m[35mALTER TABLE "sections" ADD "featured" integer[0m
+  [1m[36mprimary::SchemaMigration Create (1.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200115174909"]]
+  [1m[35m (68.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(5747818275467606310)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5747818275467606310)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddFeaturedToSection (20200115174909)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (22.4ms)[0m  [1m[35mALTER TABLE "sections" DROP COLUMN "featured"[0m
+  [1m[36mprimary::SchemaMigration Destroy (1.1ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20200115174909"]]
+  [1m[35m (30.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(5747818275467606310)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5747818275467606310)[0m
+  [1m[35m (2.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddFeaturedToSection (20200115183053)
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (46.4ms)[0m  [1m[35mALTER TABLE "sections" ADD "featured" integer[0m
+  [1m[36mprimary::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200115183053"]]
+  [1m[35m (91.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5747818275467606310)[0m
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (6.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5747818275467606310)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddFeaturedToSection (20200115183053)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (64.8ms)[0m  [1m[35mALTER TABLE "sections" DROP COLUMN "featured"[0m
+  [1m[36mprimary::SchemaMigration Destroy (0.8ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20200115183053"]]
+  [1m[35m (67.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT pg_advisory_unlock(5747818275467606310)[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (18.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5747818275467606310)[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddFeaturedToSection (20200115183053)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (23.8ms)[0m  [1m[35mALTER TABLE "sections" ADD "top_story" integer[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200115183053"]]
+  [1m[35m (44.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (3.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5747818275467606310)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mSection Load (0.6ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSection Update (27.7ms)[0m  [1m[33mUPDATE "sections" SET "updated_at" = $1, "top_story" = $2 WHERE "sections"."id" = $3[0m  [["updated_at", "2020-01-15 18:35:53.944807"], ["top_story", 7], ["id", 1]]
+  [1m[35m (54.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (97.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "articles" WHERE "articles"."top_story" = $1[0m  [["top_story", 1]]
+  [1m[36mSection Load (0.6ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "articles" WHERE "articles"."top_story" = $1[0m  [["top_story", 1]]
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "articles" WHERE "articles"."top_story" = $1[0m  [["top_story", 1]]
+  [1m[36mSection Load (0.4ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "articles" WHERE "articles"."id" = $1[0m  [["id", 1]]
+  [1m[36mArticle Load (1.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1[0m  [["id", 1]]
+  [1m[36mSection Load (0.3ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSection Load (0.4ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSection Load (0.4ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mArticle Load (1.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."section_id" = $1[0m  [["section_id", 1]]
+  [1m[36mSection Load (0.4ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mArticle Load (0.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."section_id" = $1[0m  [["section_id", 1]]
+  [1m[36mSection Load (0.5ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Started GET "/sections" for ::1 at 2020-01-15 14:05:09 -0500
+  [1m[35m (32.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/home/jeremy/ga/project4/daisywheel/daisywheel-api/app/controllers/sections_controller.rb:8: syntax error, unexpected '}', expecting =>
+...articles.where(id: :top_story)}
+...                              ^
+/home/jeremy/ga/project4/daisywheel/daisywheel-api/app/controllers/sections_controller.rb:51: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/sections_controller.rb:8: syntax error, unexpected '}', expecting =>
+app/controllers/sections_controller.rb:51: syntax error, unexpected end-of-input, expecting end
+app/controllers/sections_controller.rb:8: syntax error, unexpected '}', expecting =>
+app/controllers/sections_controller.rb:51: syntax error, unexpected end-of-input, expecting end
+Started GET "/sections" for ::1 at 2020-01-15 14:09:08 -0500
+  [1m[35m (2.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/home/jeremy/ga/project4/daisywheel/daisywheel-api/app/controllers/sections_controller.rb:15: syntax error, unexpected '\n', expecting =>
+/home/jeremy/ga/project4/daisywheel/daisywheel-api/app/controllers/sections_controller.rb:53: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/sections_controller.rb:15: syntax error, unexpected '\n', expecting =>
+app/controllers/sections_controller.rb:53: syntax error, unexpected end-of-input, expecting end
+app/controllers/sections_controller.rb:15: syntax error, unexpected '\n', expecting =>
+app/controllers/sections_controller.rb:53: syntax error, unexpected end-of-input, expecting end
+Started GET "/sections/1" for ::1 at 2020-01-15 14:09:27 -0500
+  
+SyntaxError (/home/jeremy/ga/project4/daisywheel/daisywheel-api/app/controllers/sections_controller.rb:15: syntax error, unexpected '\n', expecting =>
+/home/jeremy/ga/project4/daisywheel/daisywheel-api/app/controllers/sections_controller.rb:53: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/sections_controller.rb:15: syntax error, unexpected '\n', expecting =>
+app/controllers/sections_controller.rb:53: syntax error, unexpected end-of-input, expecting end
+app/controllers/sections_controller.rb:15: syntax error, unexpected '\n', expecting =>
+app/controllers/sections_controller.rb:53: syntax error, unexpected end-of-input, expecting end
+Started GET "/sections/1" for ::1 at 2020-01-15 14:10:33 -0500
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SectionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSection Load (0.6ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sections_controller.rb:46:in `set_section'
+  [1m[36mCACHE Section Load (0.0ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sections_controller.rb:13:in `show'
+Completed 500 Internal Server Error in 252ms (ActiveRecord: 47.5ms | Allocations: 7832)
+
+
+  
+ArgumentError (Unsupported argument type: 7 (Integer)):
+  
+app/controllers/sections_controller.rb:14:in `show'
+Started GET "/sections/1" for ::1 at 2020-01-15 14:13:03 -0500
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SectionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSection Load (2.4ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sections_controller.rb:46:in `set_section'
+  [1m[36mCACHE Section Load (0.2ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sections_controller.rb:13:in `show'
+  [1m[36mArticle Load (2.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/sections_controller.rb:14:in `show'
+Completed 500 Internal Server Error in 137ms (ActiveRecord: 29.1ms | Allocations: 17705)
+
+
+  
+TypeError (#<Article id: 7, title: "Haiku II Electric Boogaloo", dek: "... for you!", content: "What if I were to --<div>hoping that it will be sa...", image: nil, caption: nil, credit: nil, url: nil, published: true, static: false, created_at: "2020-01-14 17:40:02", updated_at: "2020-01-14 19:37:05", section_id: 1, author_id: 1> is not a symbol nor a string):
+  
+app/controllers/sections_controller.rb:15:in `show'
+Started GET "/sections/1" for ::1 at 2020-01-15 14:14:17 -0500
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SectionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSection Load (0.4ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sections_controller.rb:46:in `set_section'
+  [1m[36mCACHE Section Load (0.0ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sections_controller.rb:13:in `show'
+  [1m[36mArticle Load (0.7ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/sections_controller.rb:14:in `show'
+Completed 500 Internal Server Error in 80ms (ActiveRecord: 18.9ms | Allocations: 18277)
+
+
+  
+NoMethodError (undefined method `serializable_hash' for 7:Integer):
+  
+app/controllers/sections_controller.rb:15:in `show'
+Started GET "/sections/1" for ::1 at 2020-01-15 14:17:01 -0500
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SectionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSection Load (0.4ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sections_controller.rb:47:in `set_section'
+  [1m[36mCACHE Section Load (0.1ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sections_controller.rb:13:in `show'
+  [1m[36mArticle Load (2.9ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/sections_controller.rb:14:in `show'
+Completed 500 Internal Server Error in 242ms (ActiveRecord: 40.1ms | Allocations: 19263)
+
+
+  
+NoMethodError (undefined method `top_story_object=' for #<Section:0x000055d883e402f8>
+Did you mean?  top_story=):
+  
+app/controllers/sections_controller.rb:15:in `show'
+Started GET "/sections/1" for ::1 at 2020-01-15 14:18:12 -0500
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SectionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSection Load (0.8ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sections_controller.rb:47:in `set_section'
+  [1m[36mCACHE Section Load (0.0ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sections_controller.rb:13:in `show'
+  [1m[36mArticle Load (1.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/sections_controller.rb:14:in `show'
+Completed 500 Internal Server Error in 682ms (ActiveRecord: 23.3ms | Allocations: 87814)
+
+
+  
+NameError (undefined local variable or method `top_story_object' for #<SectionsController:0x000055fd224fae00>
+Did you mean?  @top_story):
+  
+app/controllers/sections_controller.rb:15:in `show'
+Started GET "/sections/1" for ::1 at 2020-01-15 14:19:17 -0500
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SectionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSection Load (0.6ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sections_controller.rb:47:in `set_section'
+  [1m[36mCACHE Section Load (0.0ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sections_controller.rb:13:in `show'
+  [1m[36mArticle Load (0.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/sections_controller.rb:14:in `show'
+Completed 500 Internal Server Error in 142ms (ActiveRecord: 11.9ms | Allocations: 17426)
+
+
+  
+ActiveModel::MissingAttributeError (can't write unknown attribute `top_story_object`):
+  
+app/controllers/sections_controller.rb:15:in `show'
+  [1m[36mArticle Load (0.7ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mSection Load (0.3ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Started GET "/sections/1" for ::1 at 2020-01-15 14:22:28 -0500
+  [1m[35m (32.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SectionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSection Load (0.4ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sections_controller.rb:46:in `set_section'
+  [1m[36mCACHE Section Load (0.0ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sections_controller.rb:13:in `show'
+  [1m[36mArticle Load (0.9ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/sections_controller.rb:14:in `show'
+Completed 200 OK in 98ms (Views: 3.5ms | ActiveRecord: 22.5ms | Allocations: 17544)
+
+
+Started GET "/sections/1" for ::1 at 2020-01-15 14:23:28 -0500
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SectionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSection Load (1.0ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sections_controller.rb:46:in `set_section'
+  [1m[36mCACHE Section Load (0.0ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sections_controller.rb:13:in `show'
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/sections_controller.rb:14:in `show'
+Completed 200 OK in 153ms (Views: 5.1ms | ActiveRecord: 23.4ms | Allocations: 17878)
+
+

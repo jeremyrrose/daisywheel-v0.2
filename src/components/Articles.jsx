@@ -30,7 +30,7 @@ class Articles extends React.Component {
                 image={article.image}
                 title={article.title}
                 dek={article.dek}
-                author={article.author_id}
+                author={article.author.name}
                 date={article.created_at}
                 published={article.published}
                 />)

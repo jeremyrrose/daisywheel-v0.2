@@ -5,7 +5,7 @@ class Edit::ArticlesController < ApplicationController
   def index
     @articles = Article.order("id DESC")
 
-    render json: @articles
+    render json: @articles, :include => {:author => {:only => :name}}
   end
 
   # GET /articles/1
