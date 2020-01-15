@@ -1,9 +1,9 @@
-class ArticlesController < ApplicationController
+class Edit::ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :update, :destroy]
 
   # GET /articles
   def index
-    @articles = Article.where('published = true').order("id DESC")
+    @articles = Article.order("id DESC")
 
     render json: @articles
   end

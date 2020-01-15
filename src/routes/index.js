@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Nav from '../components/shared/Nav.jsx'
+import Articles from '../components/Articles.jsx'
 import NewArticle from '../components/NewArticle.jsx'
 import EditArticle from '../components/EditArticle.jsx'
 
@@ -23,6 +24,11 @@ const Routes = ({ }) => (
                 exact
                 path="/edit/articles/:id"
                 render={props => (<EditArticle {...props} />)}
+                />
+                <Route
+                exact
+                path="/edit/articles/"
+                render={props => (<Articles {...props} />)}
                 />
             </Switch>
         </div>

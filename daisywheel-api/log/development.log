@@ -5164,3 +5164,999 @@ puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
 puma (4.3.1) lib/puma/server.rb:472:in `process_client'
 puma (4.3.1) lib/puma/server.rb:328:in `block in run'
 puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+DEPRECATION WARNING: Using `bin/rake routes` is deprecated and will be removed in Rails 6.1. Use `bin/rails routes` instead.
+ (called from load at /home/jeremy/.rbenv/versions/2.6.5/bin/rake:23)
+Started GET "/articles/" for ::1 at 2020-01-15 10:15:06 -0500
+  [1m[35m (3.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ArticlesController#index as HTML
+  [1m[36mArticle Load (1.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/articles_controller.rb:8:in `index'
+Completed 200 OK in 72ms (Views: 46.3ms | ActiveRecord: 14.1ms | Allocations: 12902)
+
+
+Started GET "/articles/" for ::1 at 2020-01-15 10:19:21 -0500
+Processing by ArticlesController#index as HTML
+  [1m[36mArticle Load (0.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE (published = true) ORDER BY id DESC[0m
+  ↳ app/controllers/articles_controller.rb:8:in `index'
+Completed 200 OK in 61ms (Views: 41.3ms | ActiveRecord: 11.3ms | Allocations: 10665)
+
+
+Started GET "/articles/" for ::1 at 2020-01-15 10:29:25 -0500
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ArticlesController#index as HTML
+  [1m[36mArticle Load (6.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE (published = true) ORDER BY id DESC[0m
+  ↳ app/controllers/articles_controller.rb:8:in `index'
+Completed 200 OK in 68ms (Views: 42.8ms | ActiveRecord: 20.1ms | Allocations: 11723)
+
+
+Started GET "/edit/articles/" for ::1 at 2020-01-15 10:29:33 -0500
+  
+ActionController::RoutingError (uninitialized constant Edit::ArticlesController):
+  
+activesupport (6.0.2.1) lib/active_support/inflector/methods.rb:297:in `const_get'
+activesupport (6.0.2.1) lib/active_support/inflector/methods.rb:297:in `block in constantize'
+activesupport (6.0.2.1) lib/active_support/inflector/methods.rb:280:in `each'
+activesupport (6.0.2.1) lib/active_support/inflector/methods.rb:280:in `inject'
+activesupport (6.0.2.1) lib/active_support/inflector/methods.rb:280:in `constantize'
+activesupport (6.0.2.1) lib/active_support/dependencies/zeitwerk_integration.rb:19:in `constantize'
+actionpack (6.0.2.1) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (6.0.2.1) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (6.0.2.1) lib/action_dispatch/routing/route_set.rb:45:in `controller'
+actionpack (6.0.2.1) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (6.0.2.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.2.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.2.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.2.1) lib/action_dispatch/routing/route_set.rb:837:in `call'
+rack (2.1.1) lib/rack/etag.rb:27:in `call'
+rack (2.1.1) lib/rack/conditional_get.rb:27:in `call'
+rack (2.1.1) lib/rack/head.rb:14:in `call'
+activerecord (6.0.2.1) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.2.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.1.1) lib/rack/runtime.rb:24:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.1.1) lib/rack/sendfile.rb:113:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/edit/articles/" for ::1 at 2020-01-15 10:34:27 -0500
+  [1m[35m (2.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (0.9ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+Completed 200 OK in 61ms (Views: 40.1ms | ActiveRecord: 16.1ms | Allocations: 12905)
+
+
+Started GET "/new/broken.jpg" for 127.0.0.1 at 2020-01-15 10:36:34 -0500
+Started GET "/magazines/1" for ::1 at 2020-01-15 10:36:34 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/new/broken.jpg"):
+  
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.1.1) lib/rack/runtime.rb:24:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.1.1) lib/rack/sendfile.rb:113:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Processing by MagazinesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMagazine Load (0.9ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:44:in `set_magazine'
+Completed 200 OK in 144ms (Views: 0.6ms | ActiveRecord: 11.6ms | Allocations: 9326)
+
+
+Started POST "/articles" for ::1 at 2020-01-15 10:37:20 -0500
+  
+ActionController::RoutingError (No route matches [POST] "/articles"):
+  
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.1.1) lib/rack/runtime.rb:24:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.1.1) lib/rack/sendfile.rb:113:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/new/broken.jpg" for 127.0.0.1 at 2020-01-15 10:39:17 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/new/broken.jpg"):
+  
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.1.1) lib/rack/runtime.rb:24:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.1.1) lib/rack/sendfile.rb:113:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/magazines/1" for ::1 at 2020-01-15 10:39:17 -0500
+Processing by MagazinesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMagazine Load (0.5ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:44:in `set_magazine'
+Completed 200 OK in 3ms (Views: 0.7ms | ActiveRecord: 0.5ms | Allocations: 826)
+
+
+Started POST "/edit/articles" for ::1 at 2020-01-15 10:39:37 -0500
+Processing by Edit::ArticlesController#create as HTML
+  Parameters: {"title"=>"And here we go again", "dek"=>"and again and again", "content"=>"We'll start here.<div><br></div><div>In the wysiwyg, as one may sometimes want to do.</div>", "published"=>false, "section_id"=>"1", "author_id"=>"1", "article"=>{"title"=>"And here we go again", "dek"=>"and again and again", "content"=>"We'll start here.<div><br></div><div>In the wysiwyg, as one may sometimes want to do.</div>", "published"=>false, "section_id"=>"1", "author_id"=>"1"}}
+  [1m[35m (9.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/edit/articles_controller.rb:22:in `create'
+  [1m[36mAuthor Load (0.4ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:22:in `create'
+  [1m[36mSection Load (0.3ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:22:in `create'
+  [1m[36mArticle Create (50.4ms)[0m  [1m[32mINSERT INTO "articles" ("title", "dek", "content", "created_at", "updated_at", "section_id", "author_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "And here we go again"], ["dek", "and again and again"], ["content", "We'll start here.<div><br></div><div>In the wysiwyg, as one may sometimes want to do.</div>"], ["created_at", "2020-01-15 15:39:37.812185"], ["updated_at", "2020-01-15 15:39:37.812185"], ["section_id", 1], ["author_id", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:22:in `create'
+  [1m[35m (14.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/edit/articles_controller.rb:22:in `create'
+Completed 201 Created in 325ms (Views: 4.0ms | ActiveRecord: 93.0ms | Allocations: 23027)
+
+
+Started GET "/edit/articles/" for ::1 at 2020-01-15 10:39:44 -0500
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (0.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+Completed 200 OK in 9ms (Views: 4.0ms | ActiveRecord: 0.8ms | Allocations: 2617)
+
+
+Started GET "/articles/" for ::1 at 2020-01-15 10:39:53 -0500
+Processing by ArticlesController#index as HTML
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE (published = true) ORDER BY id DESC[0m
+  ↳ app/controllers/articles_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.5ms | Allocations: 1223)
+
+
+Started GET "/new/broken.jpg" for 127.0.0.1 at 2020-01-15 10:54:16 -0500
+Started GET "/magazines/1" for ::1 at 2020-01-15 10:54:16 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/new/broken.jpg"):
+  
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.1.1) lib/rack/runtime.rb:24:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.1.1) lib/rack/sendfile.rb:113:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Processing by MagazinesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMagazine Load (1.8ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:44:in `set_magazine'
+Completed 200 OK in 13ms (Views: 0.8ms | ActiveRecord: 4.0ms | Allocations: 909)
+
+
+Started GET "/new/broken.jpg" for 127.0.0.1 at 2020-01-15 10:58:42 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/new/broken.jpg"):
+  
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.1.1) lib/rack/runtime.rb:24:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.1.1) lib/rack/sendfile.rb:113:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/magazines/1" for ::1 at 2020-01-15 10:58:42 -0500
+Processing by MagazinesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMagazine Load (0.7ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:44:in `set_magazine'
+Completed 200 OK in 8ms (Views: 0.7ms | ActiveRecord: 1.8ms | Allocations: 898)
+
+
+Started GET "/new/broken.jpg" for 127.0.0.1 at 2020-01-15 10:58:55 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/new/broken.jpg"):
+  
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.1.1) lib/rack/runtime.rb:24:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.1.1) lib/rack/sendfile.rb:113:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/edit/articles/" for ::1 at 2020-01-15 11:01:02 -0500
+Started GET "/magazines/1" for ::1 at 2020-01-15 11:01:02 -0500
+Processing by MagazinesController#show as HTML
+  Parameters: {"id"=>"1"}
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mMagazine Load (2.4ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mArticle Load (2.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/magazines_controller.rb:44:in `set_magazine'
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+Completed 200 OK in 8ms (Views: 1.3ms | ActiveRecord: 2.4ms | Allocations: 1578)
+
+
+Completed 200 OK in 10ms (Views: 7.4ms | ActiveRecord: 2.1ms | Allocations: 3375)
+
+
+Started GET "/magazines/1" for ::1 at 2020-01-15 11:01:38 -0500
+Processing by MagazinesController#show as HTML
+  Parameters: {"id"=>"1"}
+Started GET "/edit/articles/" for ::1 at 2020-01-15 11:01:38 -0500
+  [1m[36mMagazine Load (2.7ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:44:in `set_magazine'
+Completed 200 OK in 6ms (Views: 0.8ms | ActiveRecord: 2.7ms | Allocations: 1172)
+
+
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (0.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+Completed 200 OK in 14ms (Views: 12.9ms | ActiveRecord: 0.6ms | Allocations: 2587)
+
+
+Started GET "/magazines/1" for ::1 at 2020-01-15 11:02:03 -0500
+Processing by MagazinesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMagazine Load (0.7ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:44:in `set_magazine'
+Completed 200 OK in 4ms (Views: 0.7ms | ActiveRecord: 0.7ms | Allocations: 810)
+
+
+Started GET "/edit/articles/" for ::1 at 2020-01-15 11:02:03 -0500
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (0.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+Completed 200 OK in 8ms (Views: 6.6ms | ActiveRecord: 0.8ms | Allocations: 2587)
+
+
+Started GET "/new/broken.jpg" for 127.0.0.1 at 2020-01-15 11:03:57 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/new/broken.jpg"):
+  
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.1.1) lib/rack/runtime.rb:24:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.1.1) lib/rack/sendfile.rb:113:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/edit/articles/" for ::1 at 2020-01-15 11:04:00 -0500
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (2.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+Completed 200 OK in 11ms (Views: 7.9ms | ActiveRecord: 2.6ms | Allocations: 2586)
+
+
+Started GET "/magazines/1" for ::1 at 2020-01-15 11:05:02 -0500
+Processing by MagazinesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMagazine Load (0.5ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:44:in `set_magazine'
+Completed 200 OK in 4ms (Views: 0.4ms | ActiveRecord: 0.5ms | Allocations: 810)
+
+
+Started GET "/edit/articles/" for ::1 at 2020-01-15 11:05:02 -0500
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (0.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+Completed 200 OK in 9ms (Views: 7.8ms | ActiveRecord: 0.6ms | Allocations: 2587)
+
+
+Started GET "/edit/articles/" for ::1 at 2020-01-15 11:05:40 -0500
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (0.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.6ms | Allocations: 2587)
+
+
+Started GET "/magazines/1" for ::1 at 2020-01-15 11:06:19 -0500
+Processing by MagazinesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMagazine Load (1.2ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:44:in `set_magazine'
+Completed 200 OK in 7ms (Views: 0.7ms | ActiveRecord: 1.2ms | Allocations: 1135)
+
+
+Started GET "/edit/articles/" for ::1 at 2020-01-15 11:06:19 -0500
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (2.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+Completed 200 OK in 20ms (Views: 15.6ms | ActiveRecord: 2.0ms | Allocations: 2587)
+
+
+Started GET "/magazines/1" for ::1 at 2020-01-15 11:06:49 -0500
+Processing by MagazinesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMagazine Load (0.8ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:44:in `set_magazine'
+Completed 200 OK in 6ms (Views: 1.9ms | ActiveRecord: 0.8ms | Allocations: 810)
+
+
+Started GET "/edit/articles/" for ::1 at 2020-01-15 11:06:49 -0500
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (2.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+Completed 200 OK in 18ms (Views: 15.1ms | ActiveRecord: 2.6ms | Allocations: 2587)
+
+
+Started GET "/edit/articles/" for ::1 at 2020-01-15 11:19:48 -0500
+Started GET "/magazines/1" for ::1 at 2020-01-15 11:19:48 -0500
+Processing by MagazinesController#show as HTML
+Processing by Edit::ArticlesController#index as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (11.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+  [1m[36mMagazine Load (16.9ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:44:in `set_magazine'
+Completed 200 OK in 44ms (Views: 17.4ms | ActiveRecord: 19.1ms | Allocations: 2002)
+
+
+Completed 200 OK in 59ms (Views: 46.5ms | ActiveRecord: 11.3ms | Allocations: 3595)
+
+
+Started GET "/magazines/1" for ::1 at 2020-01-15 11:21:11 -0500
+Started GET "/edit/articles/" for ::1 at 2020-01-15 11:21:11 -0500
+Processing by MagazinesController#show as HTML
+  Parameters: {"id"=>"1"}
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mMagazine Load (0.8ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:44:in `set_magazine'
+Completed 200 OK in 126ms (Views: 2.0ms | ActiveRecord: 114.4ms | Allocations: 892)
+
+
+  [1m[36mArticle Load (2.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+Completed 200 OK in 146ms (Views: 16.1ms | ActiveRecord: 2.4ms | Allocations: 3629)
+
+
+Started GET "/magazines/1" for ::1 at 2020-01-15 11:21:21 -0500
+Processing by MagazinesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMagazine Load (0.4ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:44:in `set_magazine'
+Completed 200 OK in 8ms (Views: 0.7ms | ActiveRecord: 0.4ms | Allocations: 810)
+
+
+Started GET "/edit/articles/" for ::1 at 2020-01-15 11:21:21 -0500
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (0.7ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+Completed 200 OK in 12ms (Views: 10.4ms | ActiveRecord: 0.7ms | Allocations: 2587)
+
+
+Started GET "/magazines/1" for ::1 at 2020-01-15 11:21:29 -0500
+Processing by MagazinesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMagazine Load (0.4ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:44:in `set_magazine'
+Completed 200 OK in 3ms (Views: 0.5ms | ActiveRecord: 0.4ms | Allocations: 810)
+
+
+Started GET "/edit/articles/" for ::1 at 2020-01-15 11:21:30 -0500
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (0.7ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+Completed 200 OK in 6ms (Views: 4.8ms | ActiveRecord: 0.7ms | Allocations: 2587)
+
+
+Started GET "/magazines/1" for ::1 at 2020-01-15 11:22:29 -0500
+Processing by MagazinesController#show as HTML
+  Parameters: {"id"=>"1"}
+Started GET "/edit/articles/" for ::1 at 2020-01-15 11:22:29 -0500
+  [1m[36mMagazine Load (1.0ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:44:in `set_magazine'
+Completed 200 OK in 11ms (Views: 0.6ms | ActiveRecord: 1.0ms | Allocations: 1010)
+
+
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (3.7ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+Completed 200 OK in 18ms (Views: 13.7ms | ActiveRecord: 3.7ms | Allocations: 2587)
+
+
+Started GET "/edit/articles/" for ::1 at 2020-01-15 11:23:35 -0500
+Started GET "/magazines/1" for ::1 at 2020-01-15 11:23:35 -0500
+Processing by Edit::ArticlesController#index as HTML
+Processing by MagazinesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (4.9ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+Completed 200 OK in 28ms (Views: 19.7ms | ActiveRecord: 4.9ms | Allocations: 3173)
+
+
+  [1m[36mMagazine Load (17.5ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:44:in `set_magazine'
+Completed 200 OK in 24ms (Views: 0.7ms | ActiveRecord: 17.5ms | Allocations: 3450)
+
+
+Started GET "/magazines/1" for ::1 at 2020-01-15 11:26:46 -0500
+Started GET "/edit/articles/" for ::1 at 2020-01-15 11:26:46 -0500
+Processing by Edit::ArticlesController#index as HTML
+Processing by MagazinesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (3.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+Completed 200 OK in 18ms (Views: 13.6ms | ActiveRecord: 3.2ms | Allocations: 3173)
+
+
+  [1m[36mMagazine Load (12.5ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:44:in `set_magazine'
+Completed 200 OK in 21ms (Views: 1.2ms | ActiveRecord: 12.5ms | Allocations: 3481)
+
+
+Started GET "/magazines/1" for ::1 at 2020-01-15 11:27:19 -0500
+Processing by MagazinesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMagazine Load (0.6ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:44:in `set_magazine'
+Completed 200 OK in 4ms (Views: 1.1ms | ActiveRecord: 0.6ms | Allocations: 810)
+
+
+Started GET "/edit/articles/" for ::1 at 2020-01-15 11:27:19 -0500
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (2.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+Completed 200 OK in 9ms (Views: 5.4ms | ActiveRecord: 2.8ms | Allocations: 2587)
+
+
+Started GET "/magazines/1" for ::1 at 2020-01-15 11:27:39 -0500
+Processing by MagazinesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMagazine Load (0.7ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:44:in `set_magazine'
+Completed 200 OK in 4ms (Views: 0.6ms | ActiveRecord: 0.7ms | Allocations: 964)
+
+
+Started GET "/edit/articles/" for ::1 at 2020-01-15 11:27:39 -0500
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (0.7ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 0.7ms | Allocations: 2587)
+
+
+Started GET "/magazines/1" for ::1 at 2020-01-15 11:48:11 -0500
+Started GET "/edit/articles/" for ::1 at 2020-01-15 11:48:11 -0500
+Processing by MagazinesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMagazine Load (0.7ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:44:in `set_magazine'
+Completed 200 OK in 9ms (Views: 0.7ms | ActiveRecord: 4.7ms | Allocations: 1225)
+
+
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (1.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+Completed 200 OK in 9ms (Views: 6.9ms | ActiveRecord: 1.3ms | Allocations: 2661)
+
+
+Started GET "/magazines/1" for ::1 at 2020-01-15 11:51:24 -0500
+Processing by MagazinesController#show as HTML
+Started GET "/edit/articles/" for ::1 at 2020-01-15 11:51:24 -0500
+  Parameters: {"id"=>"1"}
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mMagazine Load (0.7ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:44:in `set_magazine'
+Completed 200 OK in 11ms (Views: 3.5ms | ActiveRecord: 1.0ms | Allocations: 989)
+
+
+  [1m[36mArticle Load (7.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+Completed 200 OK in 20ms (Views: 12.1ms | ActiveRecord: 7.4ms | Allocations: 3553)
+
+
+Started GET "/magazines/1" for ::1 at 2020-01-15 11:51:46 -0500
+Started GET "/edit/articles/" for ::1 at 2020-01-15 11:51:46 -0500
+Processing by Edit::ArticlesController#index as HTML
+Processing by MagazinesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.9ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+  [1m[36mMagazine Load (6.9ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:44:in `set_magazine'
+Completed 200 OK in 10ms (Views: 0.5ms | ActiveRecord: 6.9ms | Allocations: 1582)
+
+
+Completed 200 OK in 14ms (Views: 13.1ms | ActiveRecord: 0.9ms | Allocations: 4012)
+
+
+Started GET "/articles/8" for ::1 at 2020-01-15 11:52:28 -0500
+Processing by ArticlesController#show as */*
+  Parameters: {"id"=>"8"}
+  [1m[36mArticle Load (0.9ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:46:in `set_article'
+Completed 200 OK in 11ms (Views: 0.9ms | ActiveRecord: 0.9ms | Allocations: 952)
+
+
+Started GET "/edit/articles/broken.jpg" for 127.0.0.1 at 2020-01-15 11:52:29 -0500
+Processing by Edit::ArticlesController#show as JPEG
+  Parameters: {"id"=>"broken"}
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:46:in `set_article'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.4ms | Allocations: 641)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Article with 'id'=broken):
+  
+app/controllers/edit/articles_controller.rb:46:in `set_article'
+Started GET "/edit/articles/" for ::1 at 2020-01-15 11:52:33 -0500
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (0.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.6ms | Allocations: 2586)
+
+
+Started GET "/edit/articles/broken.jpg" for 127.0.0.1 at 2020-01-15 11:52:36 -0500
+Processing by Edit::ArticlesController#show as JPEG
+  Parameters: {"id"=>"broken"}
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:46:in `set_article'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.5ms | Allocations: 635)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Article with 'id'=broken):
+  
+app/controllers/edit/articles_controller.rb:46:in `set_article'
+Started GET "/articles/5" for ::1 at 2020-01-15 11:52:36 -0500
+Processing by ArticlesController#show as */*
+  Parameters: {"id"=>"5"}
+  [1m[36mArticle Load (0.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:46:in `set_article'
+Completed 200 OK in 4ms (Views: 1.0ms | ActiveRecord: 0.6ms | Allocations: 846)
+
+
+Started GET "/new/broken.jpg" for 127.0.0.1 at 2020-01-15 11:52:39 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/new/broken.jpg"):
+  
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.1.1) lib/rack/runtime.rb:24:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.1.1) lib/rack/sendfile.rb:113:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/edit/articles/" for ::1 at 2020-01-15 11:52:40 -0500
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (3.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+Completed 200 OK in 13ms (Views: 8.8ms | ActiveRecord: 3.8ms | Allocations: 2586)
+
+
+Started GET "/edit/articles/broken.jpg" for 127.0.0.1 at 2020-01-15 11:52:43 -0500
+Processing by Edit::ArticlesController#show as JPEG
+  Parameters: {"id"=>"broken"}
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:46:in `set_article'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.5ms | Allocations: 635)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Article with 'id'=broken):
+  
+app/controllers/edit/articles_controller.rb:46:in `set_article'
+Started GET "/articles/4" for ::1 at 2020-01-15 11:52:43 -0500
+Processing by ArticlesController#show as */*
+  Parameters: {"id"=>"4"}
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:46:in `set_article'
+Completed 200 OK in 6ms (Views: 1.5ms | ActiveRecord: 0.5ms | Allocations: 848)
+
+
+Started GET "/edit/articles/" for ::1 at 2020-01-15 11:52:50 -0500
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (0.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+Completed 200 OK in 12ms (Views: 10.7ms | ActiveRecord: 0.6ms | Allocations: 2587)
+
+
+Started GET "/magazines/1" for ::1 at 2020-01-15 11:56:09 -0500
+Processing by MagazinesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMagazine Load (0.4ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:44:in `set_magazine'
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.4ms | Allocations: 810)
+
+
+Started GET "/edit/articles/" for ::1 at 2020-01-15 11:56:09 -0500
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (0.9ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+Completed 200 OK in 9ms (Views: 7.1ms | ActiveRecord: 0.9ms | Allocations: 2587)
+
+
+Started GET "/magazines/1" for ::1 at 2020-01-15 12:06:27 -0500
+Started GET "/edit/articles/" for ::1 at 2020-01-15 12:06:27 -0500
+Processing by MagazinesController#show as HTML
+  Parameters: {"id"=>"1"}
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mMagazine Load (5.7ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:44:in `set_magazine'
+  [1m[36mArticle Load (4.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+Completed 200 OK in 22ms (Views: 1.2ms | ActiveRecord: 6.0ms | Allocations: 1067)
+
+
+Completed 200 OK in 28ms (Views: 22.1ms | ActiveRecord: 4.8ms | Allocations: 3469)
+
+
+Started GET "/magazines/1" for ::1 at 2020-01-15 12:06:45 -0500
+Processing by MagazinesController#show as HTML
+  Parameters: {"id"=>"1"}
+Started GET "/edit/articles/" for ::1 at 2020-01-15 12:06:45 -0500
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (2.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  [1m[36mMagazine Load (16.4ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+  ↳ app/controllers/magazines_controller.rb:44:in `set_magazine'
+Completed 200 OK in 14ms (Views: 11.5ms | ActiveRecord: 2.0ms | Allocations: 3045)
+
+
+Completed 200 OK in 33ms (Views: 1.1ms | ActiveRecord: 18.1ms | Allocations: 4377)
+
+
+Started GET "/magazines/1" for ::1 at 2020-01-15 12:07:07 -0500
+Processing by MagazinesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMagazine Load (1.0ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:44:in `set_magazine'
+Completed 200 OK in 3ms (Views: 0.5ms | ActiveRecord: 1.0ms | Allocations: 810)
+
+
+Started GET "/edit/articles/" for ::1 at 2020-01-15 12:07:07 -0500
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (2.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+Completed 200 OK in 15ms (Views: 12.0ms | ActiveRecord: 2.3ms | Allocations: 2587)
+
+
+Started GET "/magazines/1" for ::1 at 2020-01-15 12:09:28 -0500
+Started GET "/edit/articles/" for ::1 at 2020-01-15 12:09:28 -0500
+Processing by Edit::ArticlesController#index as HTML
+Processing by MagazinesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMagazine Load (3.5ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:44:in `set_magazine'
+  [1m[36mArticle Load (10.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+Completed 200 OK in 15ms (Views: 3.0ms | ActiveRecord: 3.5ms | Allocations: 837)
+
+
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+Completed 200 OK in 32ms (Views: 20.9ms | ActiveRecord: 10.4ms | Allocations: 4162)
+
+
+Started GET "/articles/6" for ::1 at 2020-01-15 12:11:36 -0500
+Processing by ArticlesController#show as */*
+  Parameters: {"id"=>"6"}
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:46:in `set_article'
+Completed 200 OK in 5ms (Views: 0.9ms | ActiveRecord: 0.5ms | Allocations: 849)
+
+
+Started GET "/edit/articles/broken.jpg" for 127.0.0.1 at 2020-01-15 12:11:36 -0500
+Processing by Edit::ArticlesController#show as JPEG
+  Parameters: {"id"=>"broken"}
+  [1m[36mArticle Load (0.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:46:in `set_article'
+Completed 404 Not Found in 4ms (ActiveRecord: 0.6ms | Allocations: 637)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Article with 'id'=broken):
+  
+app/controllers/edit/articles_controller.rb:46:in `set_article'
+Started PUT "/edit/articles/6" for ::1 at 2020-01-15 12:11:53 -0500
+Processing by Edit::ArticlesController#update as HTML
+  Parameters: {"title"=>"searchParty", "dek"=>"of all the things in the entire world", "content"=>"What if I were to<div>hoping that it will be saved<br><div>type here a haiku</div></div>", "published"=>true, "section_id"=>1, "author_id"=>1, "id"=>"6", "article"=>{"title"=>"searchParty", "dek"=>"of all the things in the entire world", "content"=>"What if I were to<div>hoping that it will be saved<br><div>type here a haiku</div></div>", "published"=>true, "section_id"=>1, "author_id"=>1}}
+  [1m[36mArticle Load (0.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:46:in `set_article'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/edit/articles_controller.rb:31:in `update'
+  [1m[36mAuthor Load (0.3ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:31:in `update'
+  [1m[36mSection Load (17.6ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:31:in `update'
+  [1m[36mArticle Update (22.7ms)[0m  [1m[33mUPDATE "articles" SET "dek" = $1, "published" = $2, "updated_at" = $3 WHERE "articles"."id" = $4[0m  [["dek", "of all the things in the entire world"], ["published", true], ["updated_at", "2020-01-15 17:11:53.259436"], ["id", 6]]
+  ↳ app/controllers/edit/articles_controller.rb:31:in `update'
+  [1m[35m (11.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/edit/articles_controller.rb:31:in `update'
+Completed 200 OK in 469ms (Views: 0.7ms | ActiveRecord: 52.6ms | Allocations: 5469)
+
+
+Started GET "/articles/6" for ::1 at 2020-01-15 12:14:34 -0500
+Processing by ArticlesController#show as */*
+  Parameters: {"id"=>"6"}
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:46:in `set_article'
+Completed 200 OK in 6ms (Views: 0.7ms | ActiveRecord: 0.5ms | Allocations: 847)
+
+
+Started GET "/magazines/1" for ::1 at 2020-01-15 12:14:34 -0500
+Processing by MagazinesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMagazine Load (0.5ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:44:in `set_magazine'
+Completed 200 OK in 5ms (Views: 0.7ms | ActiveRecord: 0.5ms | Allocations: 810)
+
+
+Started GET "/edit/articles/broken.jpg" for 127.0.0.1 at 2020-01-15 12:14:34 -0500
+Processing by Edit::ArticlesController#show as JPEG
+  Parameters: {"id"=>"broken"}
+  [1m[36mArticle Load (7.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:46:in `set_article'
+Completed 404 Not Found in 16ms (ActiveRecord: 7.8ms | Allocations: 635)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Article with 'id'=broken):
+  
+app/controllers/edit/articles_controller.rb:46:in `set_article'
+Started PUT "/edit/articles/6" for ::1 at 2020-01-15 12:14:56 -0500
+Processing by Edit::ArticlesController#update as HTML
+  Parameters: {"title"=>"S S S S SearchParty", "dek"=>"of all the things in the entire world", "content"=>"What if I were to<div>hoping that it will be saved<br><div>type here a haiku</div></div>", "published"=>true, "section_id"=>1, "author_id"=>1, "id"=>"6", "article"=>{"title"=>"S S S S SearchParty", "dek"=>"of all the things in the entire world", "content"=>"What if I were to<div>hoping that it will be saved<br><div>type here a haiku</div></div>", "published"=>true, "section_id"=>1, "author_id"=>1}}
+  [1m[36mArticle Load (0.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:46:in `set_article'
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/edit/articles_controller.rb:31:in `update'
+Started GET "/edit/articles/" for ::1 at 2020-01-15 12:14:56 -0500
+  [1m[36mAuthor Load (2.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:31:in `update'
+  [1m[36mSection Load (0.6ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:31:in `update'
+  [1m[36mArticle Update (1.4ms)[0m  [1m[33mUPDATE "articles" SET "title" = $1, "updated_at" = $2 WHERE "articles"."id" = $3[0m  [["title", "S S S S SearchParty"], ["updated_at", "2020-01-15 17:14:56.823412"], ["id", 6]]
+  ↳ app/controllers/edit/articles_controller.rb:31:in `update'
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (1.7ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+Completed 200 OK in 14ms (Views: 11.6ms | ActiveRecord: 1.7ms | Allocations: 2662)
+
+
+  [1m[35m (43.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/edit/articles_controller.rb:31:in `update'
+Completed 200 OK in 77ms (Views: 0.9ms | ActiveRecord: 49.8ms | Allocations: 11171)
+
+
+Started GET "/magazines/1" for ::1 at 2020-01-15 12:15:02 -0500
+Processing by MagazinesController#show as HTML
+Started GET "/edit/articles/" for ::1 at 2020-01-15 12:15:02 -0500
+  Parameters: {"id"=>"1"}
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (0.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+  [1m[36mMagazine Load (10.2ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 12ms (Views: 8.7ms | ActiveRecord: 0.8ms | Allocations: 2629)
+
+
+  ↳ app/controllers/magazines_controller.rb:44:in `set_magazine'
+Completed 200 OK in 27ms (Views: 0.6ms | ActiveRecord: 10.2ms | Allocations: 4124)
+
+
+Started GET "/new/broken.jpg" for 127.0.0.1 at 2020-01-15 12:15:37 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/new/broken.jpg"):
+  
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.1.1) lib/rack/runtime.rb:24:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.1.1) lib/rack/sendfile.rb:113:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/new/broken.jpg" for 127.0.0.1 at 2020-01-15 12:16:09 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/new/broken.jpg"):
+  
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.1.1) lib/rack/runtime.rb:24:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.1.1) lib/rack/sendfile.rb:113:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/magazines/1" for ::1 at 2020-01-15 12:16:09 -0500
+Processing by MagazinesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMagazine Load (1.9ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:44:in `set_magazine'
+Completed 200 OK in 18ms (Views: 3.3ms | ActiveRecord: 5.2ms | Allocations: 841)
+
+
+Started GET "/edit/articles/" for ::1 at 2020-01-15 12:16:17 -0500
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (0.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:8:in `index'
+Completed 200 OK in 13ms (Views: 11.9ms | ActiveRecord: 0.8ms | Allocations: 2588)
+
+
+Started GET "/articles/5" for ::1 at 2020-01-15 12:16:20 -0500
+Started GET "/edit/articles/broken.jpg" for 127.0.0.1 at 2020-01-15 12:16:20 -0500
+Processing by Edit::ArticlesController#show as JPEG
+  Parameters: {"id"=>"broken"}
+  [1m[36mArticle Load (2.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:46:in `set_article'
+Completed 404 Not Found in 8ms (ActiveRecord: 2.4ms | Allocations: 635)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Article with 'id'=broken):
+  
+app/controllers/edit/articles_controller.rb:46:in `set_article'
+Processing by ArticlesController#show as */*
+  Parameters: {"id"=>"5"}
+  [1m[36mArticle Load (0.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:46:in `set_article'
+Completed 200 OK in 4ms (Views: 0.7ms | ActiveRecord: 0.6ms | Allocations: 851)
+
+

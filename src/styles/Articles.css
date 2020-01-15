@@ -1,0 +1,12 @@
+.articleList {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    text-align: left;
+}
+
+.articleList h2 {
+    font-size: 36px;
+    margin: 0;
+}

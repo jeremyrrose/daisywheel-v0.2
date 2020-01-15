@@ -5,6 +5,8 @@
     --background-color: #ffffff;
     --secondary-color: #6969B3;
     --highlight-color: #98C1D9;
+    --body-font: 'Roboto', sans-serif;
+    --header-font: 'EB Garamond', serif;
 }
 
 header {

@@ -76,7 +76,8 @@ class EditArticle extends React.Component {
             section_id: this.state.section_id,
             author_id: this.state.author_id
         }
-        updateArticle(this.props.match.params.id, articleData);
+        updateArticle(this.props.match.params.id, articleData)
+        .then(this.props.history.push('/edit/articles'));
     }
 
     render () {

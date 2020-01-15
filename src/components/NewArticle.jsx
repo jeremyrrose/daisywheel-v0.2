@@ -27,7 +27,8 @@ class NewArticle extends React.Component {
             section_id: this.state.section_id,
             author_id: this.state.author_id
         }
-        createArticle(articleData);
+        createArticle(articleData)
+        .then(this.props.history.push('/edit/articles'));;
     }
 
     toggler = (e, componentName) => {
