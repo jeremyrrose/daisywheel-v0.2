@@ -1,4 +1,5 @@
 .articleForm {
+    flex-grow: 10;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -11,6 +12,7 @@
 }
 
 .articleForm label {
+    color: var(--primary-color);
     position: absolute;
     top: -16px;
     left: 12px;
@@ -20,8 +22,9 @@
 }
 
 .articleForm h2 {
+    color: var(--primary-color);
     font-size: 48px;
-    margin: 0px;
+    margin: -10px 0px 0px 0px;
 }
 
 .articleForm input, .articleForm select, .articleForm button {
@@ -29,7 +32,7 @@
     font-size: 18px;
     background: transparent;
     padding: 8px 14px;
-    border: 1px solid;
+    border: 1px solid var(--soft-primary-color);
     border-radius: 12px;
     margin-bottom: 30px;
 }
@@ -83,7 +86,7 @@
     text-align: left;
     font-size: 18px;
     padding: 20px;
-    border: 1px solid;
+    border: 1px solid var(--soft-primary-color);
     border-radius: 12px;
     min-height: 40vh;
     flex-grow: 10;
@@ -99,4 +102,38 @@
 .articleForm .submitRow button, .articleForm .submitRow input {
     width: 16%;
     margin: 0 0 0 30px;
+    cursor: pointer;
+    position: relative;
+    font-weight: bold;
+}
+
+.submitRow input, .heroColumn button {
+    cursor: pointer;
+    font-weight: bold;
+    color: var(--background-color);
+    background-color: var(--primary-color);
+}
+
+.submitRow button {
+    border: 0px;
+    background-color: #efefef;
+    color: var(--soft-primary-color);
+    outline-style: none;
+}
+
+button.checkOn {
+    color: var(--primary-color);
+    background-color: var(--soft-primary-color);
+}
+
+.submitRow button img {
+    position: absolute;
+    top: 8px;
+    right: 14px;
+    opacity: 0;
+    transition: .2s;
+}
+
+button.checkOn img {
+    opacity: 1;
 }

@@ -1,0 +1,20 @@
+:root {
+    --primary-color: #523F70;
+    --soft-primary-color: #D1C8E1;
+    --text-color: #0a0a0a;
+    --background-color: #ffffff;
+    --secondary-color: #6969B3;
+    --highlight-color: #98C1D9;
+}
+
+header {
+    color: var(--background-color);
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: baseline;
+}
+
+header h1 {
+    font-size: 64px;
+    margin: 8px 20px;
+}

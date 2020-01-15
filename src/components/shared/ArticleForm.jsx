@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../styles/ArticleForm.css'
+import checkMark from '../../images/checkMark.svg'
 
 const ArticleForm = ({
     id,
@@ -74,8 +75,8 @@ const ArticleForm = ({
                 <div id="content" contentEditable="true" onBlur={() => wysiwygHandler('content')} dangerouslySetInnerHTML={{__html: content}} />
             </div>
             <div className="submitRow">
-                <button name="draft" onClick={(e) => toggle(e,'draft')}>Draft</button>
-                <button name="publish" onClick={(e) => toggle(e, 'publish')}>Publish</button>
+                <button name="draft" className={published ? null : 'checkOn'} onClick={(e) => toggle(e,'draft')}>Draft <img src={checkMark} /></button>
+                <button name="publish" className={published ? 'checkOn' : null} onClick={(e) => toggle(e, 'publish')}>Publish <img src={checkMark} /></button>
                 <input type="submit" />
             </div>
 
