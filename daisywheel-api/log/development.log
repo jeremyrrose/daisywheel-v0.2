@@ -6468,3 +6468,147 @@ Processing by SectionsController#show as HTML
 Completed 200 OK in 153ms (Views: 5.1ms | ActiveRecord: 23.4ms | Allocations: 17878)
 
 
+  [1m[35m (48.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5747818275467606310)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateFeatures (20200115193822)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (433.1ms)[0m  [1m[35mCREATE TABLE "features" ("id" bigserial primary key, "section_id" bigint NOT NULL, "article_id" bigint NOT NULL, "priority" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_4c77a77d4a"
+FOREIGN KEY ("section_id")
+  REFERENCES "sections" ("id")
+, CONSTRAINT "fk_rails_5a6d7f1371"
+FOREIGN KEY ("article_id")
+  REFERENCES "articles" ("id")
+)[0m
+  [1m[35m (69.4ms)[0m  [1m[35mCREATE  INDEX  "index_features_on_section_id" ON "features"  ("section_id")[0m
+  [1m[35m (75.7ms)[0m  [1m[35mCREATE  INDEX  "index_features_on_article_id" ON "features"  ("article_id")[0m
+  [1m[36mprimary::SchemaMigration Create (2.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200115193822"]]
+  [1m[35m (41.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(5747818275467606310)[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSection Load (0.4ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mArticle Load (3.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mFeature Create (2.4ms)[0m  [1m[32mINSERT INTO "features" ("section_id", "article_id", "priority", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["section_id", 1], ["article_id", 6], ["priority", 1], ["created_at", "2020-01-15 19:41:09.541754"], ["updated_at", "2020-01-15 19:41:09.541754"]]
+  [1m[35m (49.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mSection Load (0.4ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSection Load (0.5ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFeature Load (1.1ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE "features"."section_id" = $1[0m  [["section_id", 1]]
+Started GET "/sections/1" for ::1 at 2020-01-15 14:51:55 -0500
+  [1m[35m (3.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SectionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSection Load (0.5ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sections_controller.rb:48:in `set_section'
+  [1m[36mCACHE Section Load (0.0ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sections_controller.rb:13:in `show'
+  [1m[36mArticle Load (1.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/sections_controller.rb:14:in `show'
+Completed 500 Internal Server Error in 127ms (ActiveRecord: 22.0ms | Allocations: 20280)
+
+
+  
+NoMethodError (undefined method `features' for #<Class:0x000056284921ec20>):
+  
+app/controllers/sections_controller.rb:16:in `show'
+Started GET "/sections/1" for ::1 at 2020-01-15 14:52:54 -0500
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SectionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSection Load (2.3ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sections_controller.rb:48:in `set_section'
+  [1m[36mCACHE Section Load (0.0ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sections_controller.rb:13:in `show'
+  [1m[36mArticle Load (0.9ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/sections_controller.rb:14:in `show'
+  [1m[36mFeature Load (0.8ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE "features"."section_id" = $1[0m  [["section_id", 1]]
+  ↳ app/controllers/sections_controller.rb:16:in `show'
+  [1m[36mArticle Load (0.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/sections_controller.rb:16:in `block in show'
+Completed 200 OK in 174ms (Views: 3.7ms | ActiveRecord: 44.5ms | Allocations: 26249)
+
+
+Started GET "/edit/sections/1" for ::1 at 2020-01-15 15:01:50 -0500
+Processing by Edit::SectionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSection Load (0.8ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:47:in `set_section'
+  [1m[36mCACHE Section Load (0.0ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:13:in `show'
+  [1m[36mFeature Load (1.8ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE "features"."section_id" = $1[0m  [["section_id", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+Completed 200 OK in 134ms (Views: 2.1ms | ActiveRecord: 3.0ms | Allocations: 11219)
+
+
+Started GET "/edit/sections/1" for ::1 at 2020-01-15 15:02:53 -0500
+  
+SyntaxError (/home/jeremy/ga/project4/daisywheel/daisywheel-api/app/controllers/edit/sections_controller.rb:15: syntax error, unexpected ':', expecting =>
+...ure| @feature_ids.push({[`id`]: feature.article_id}) }
+...                              ^
+/home/jeremy/ga/project4/daisywheel/daisywheel-api/app/controllers/edit/sections_controller.rb:15: syntax error, unexpected ')', expecting end
+...h({[`id`]: feature.article_id}) }
+...                              ^):
+  
+app/controllers/edit/sections_controller.rb:15: syntax error, unexpected ':', expecting =>
+app/controllers/edit/sections_controller.rb:15: syntax error, unexpected ')', expecting end
+app/controllers/edit/sections_controller.rb:15: syntax error, unexpected ':', expecting =>
+app/controllers/edit/sections_controller.rb:15: syntax error, unexpected ')', expecting end
+Started GET "/edit/sections/1" for ::1 at 2020-01-15 15:03:16 -0500
+  
+SyntaxError (/home/jeremy/ga/project4/daisywheel/daisywheel-api/app/controllers/edit/sections_controller.rb:15: syntax error, unexpected ':', expecting =>
+...ature| @feature_ids.push({[id]: feature.article_id}) }
+...                              ^
+/home/jeremy/ga/project4/daisywheel/daisywheel-api/app/controllers/edit/sections_controller.rb:15: syntax error, unexpected ')', expecting end
+...ush({[id]: feature.article_id}) }
+...                              ^):
+  
+app/controllers/edit/sections_controller.rb:15: syntax error, unexpected ':', expecting =>
+app/controllers/edit/sections_controller.rb:15: syntax error, unexpected ')', expecting end
+app/controllers/edit/sections_controller.rb:15: syntax error, unexpected ':', expecting =>
+app/controllers/edit/sections_controller.rb:15: syntax error, unexpected ')', expecting end
+Started GET "/edit/sections/1" for ::1 at 2020-01-15 15:03:21 -0500
+  
+SyntaxError (/home/jeremy/ga/project4/daisywheel/daisywheel-api/app/controllers/edit/sections_controller.rb:15: syntax error, unexpected ':', expecting =>
+...ature| @feature_ids.push({[id]: feature.article_id}) }
+...                              ^
+/home/jeremy/ga/project4/daisywheel/daisywheel-api/app/controllers/edit/sections_controller.rb:15: syntax error, unexpected ')', expecting end
+...ush({[id]: feature.article_id}) }
+...                              ^):
+  
+app/controllers/edit/sections_controller.rb:15: syntax error, unexpected ':', expecting =>
+app/controllers/edit/sections_controller.rb:15: syntax error, unexpected ')', expecting end
+app/controllers/edit/sections_controller.rb:15: syntax error, unexpected ':', expecting =>
+app/controllers/edit/sections_controller.rb:15: syntax error, unexpected ')', expecting end
+Started GET "/edit/sections/1" for ::1 at 2020-01-15 15:03:58 -0500
+Processing by Edit::SectionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSection Load (5.3ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:45:in `set_section'
+  [1m[36mCACHE Section Load (0.0ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:13:in `show'
+Completed 200 OK in 64ms (Views: 0.6ms | ActiveRecord: 18.0ms | Allocations: 6414)
+
+
+Started GET "/edit/sections/1" for ::1 at 2020-01-15 15:04:26 -0500
+  
+SyntaxError (/home/jeremy/ga/project4/daisywheel/daisywheel-api/app/controllers/edit/sections_controller.rb:14: syntax error, unexpected '{', expecting =>
+...{ section: @section, :include { :features } }
+...                              ^
+/home/jeremy/ga/project4/daisywheel/daisywheel-api/app/controllers/edit/sections_controller.rb:52: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/edit/sections_controller.rb:14: syntax error, unexpected '{', expecting =>
+app/controllers/edit/sections_controller.rb:52: syntax error, unexpected end-of-input, expecting end
+app/controllers/edit/sections_controller.rb:14: syntax error, unexpected '{', expecting =>
+app/controllers/edit/sections_controller.rb:52: syntax error, unexpected end-of-input, expecting end
+Started GET "/edit/sections/1" for ::1 at 2020-01-15 15:04:59 -0500
+Processing by Edit::SectionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSection Load (1.5ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:45:in `set_section'
+  [1m[36mCACHE Section Load (0.1ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:13:in `show'
+  [1m[36mFeature Load (2.1ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE "features"."section_id" = $1[0m  [["section_id", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:14:in `show'
+Completed 200 OK in 117ms (Views: 41.5ms | ActiveRecord: 27.0ms | Allocations: 11873)
+
+

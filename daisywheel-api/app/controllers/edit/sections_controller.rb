@@ -1,4 +1,4 @@
-class SectionsController < ApplicationController
+class Edit::SectionsController < ApplicationController
   before_action :set_section, only: [:show, :update, :destroy]
 
   # GET /sections
@@ -11,10 +11,7 @@ class SectionsController < ApplicationController
   # GET /sections/1
   def show
     @section = Section.find(params[:id])
-    @top_story = Article.find_by_id(@section.top_story)
-    @features = []
-    @section.features.each { |feature| @features.push(Article.find_by_id(feature.article_id)) }
-    render json: { section: @section, top_story_object: @top_story, features: @features }
+    render json: @section, include: :features
   end
 
   # POST /sections
