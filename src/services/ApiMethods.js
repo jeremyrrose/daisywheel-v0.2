@@ -85,6 +85,16 @@ export const getArticlesToEdit = async (section) => {
   }
 }
 
+// page list methods
+export const getPages = async () => {
+  try {
+    const resp = await Api.get('/edit/pages');
+    return resp.data
+  } catch (error) {
+    throw error
+  }
+}
+
 // section methods
 export const getSectionToEdit = async (id) => {
   try {
