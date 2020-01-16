@@ -16,16 +16,18 @@ class Articles extends React.Component {
     }
 
     setArticles = async () => {
-        const articles = await getArticlesToEdit();
-        this.setState({
-            articles: articles
-        })
+        // const articles = await getArticlesToEdit(this.props.section_id);
+        // this.setState({
+        //     articles: articles
+        // })
     }
 
-    render() {
-        const articleCards = this.state.articles.map((article, index) => {
+    articleCards = () => {
+        return this.props.articles && this.props.articles.map((article, index) => {
             return (<ArticleCard
                 key={index}
+                isTop={this.props.top_story === article.id}
+                featured={this.props.feature_ids.includes(article.id)}
                 articleId={article.id}
                 image={article.image}
                 title={article.title}
@@ -33,13 +35,19 @@ class Articles extends React.Component {
                 author={article.author.name}
                 date={article.created_at}
                 published={article.published}
+                topToggle={this.props.topToggle}
+                featureToggle={this.props.featureToggle}
                 />)
         });
+    }
+
+    render() {
+
 
         return (
             <div className="articleList">
                 <h2>Articles</h2>
-                {articleCards}
+                {this.articleCards()}
             </div>
         )
     }

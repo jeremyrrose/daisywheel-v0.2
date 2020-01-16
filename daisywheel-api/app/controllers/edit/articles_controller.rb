@@ -3,7 +3,11 @@ class Edit::ArticlesController < ApplicationController
 
   # GET /articles
   def index
-    @articles = Article.order("id DESC")
+    if params[:section_id]
+      @articles = Article.where("section_id = ?",params[:section_id]).order("id DESC")
+    else
+      @articles = Article.order("id DESC")
+    end
 
     render json: @articles, :include => {:author => {:only => :name}}
   end
@@ -16,7 +20,6 @@ class Edit::ArticlesController < ApplicationController
   # POST /articles
   def create
     puts article_params
-    puts 'halp'
     @article = Article.new(article_params)
 
     if @article.save

@@ -4,6 +4,7 @@ import Nav from '../components/shared/Nav.jsx'
 import Articles from '../components/Articles.jsx'
 import NewArticle from '../components/NewArticle.jsx'
 import EditArticle from '../components/EditArticle.jsx'
+import EditSection from '../components/EditSection.jsx'
 
 const Routes = ({ }) => (
     <BrowserRouter>
@@ -29,6 +30,11 @@ const Routes = ({ }) => (
                 exact
                 path="/edit/articles/"
                 render={props => (<Articles {...props} />)}
+                />
+                <Route
+                exact
+                path="/edit/sections/:id"
+                render={props => (<EditSection {...props} />)}
                 />
             </Switch>
         </div>

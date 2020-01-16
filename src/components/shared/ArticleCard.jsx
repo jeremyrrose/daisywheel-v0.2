@@ -1,8 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import checkMark from '../../images/checkMark.svg'
 import '../../styles/ArticleCard.css'
 
-const ArticleCard = ({image, title, dek, author, date, articleId, published}) => {
+const ArticleCard = ({image, title, dek, author, date, articleId, published, isTop, featured, topToggle, featureToggle}) => {
+    const toggleButtons = (<>
+        <button className={`top${isTop ? " on" : ""}`} onClick={() => topToggle(articleId)}>Top Story <img src={checkMark} /></button>
+        <button className={`featured${featured ? " on" : ""}`} onClick={() => featureToggle(articleId)}>Featured <img src={checkMark} /></button>
+        </>)
+
     return (
         <div className="articleCard">
             <img src={image} />
@@ -13,6 +19,7 @@ const ArticleCard = ({image, title, dek, author, date, articleId, published}) =>
             </div>
             <div className="cardControls">
                 <p>{published ? 'Published' : 'Draft' }</p>
+                { published && toggleButtons }
                 <Link to={`/edit/articles/${articleId}`}><button>Edit</button></Link>
             </div>
         </div>

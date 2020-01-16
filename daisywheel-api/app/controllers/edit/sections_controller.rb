@@ -11,7 +11,7 @@ class Edit::SectionsController < ApplicationController
   # GET /sections/1
   def show
     @section = Section.find(params[:id])
-    render json: @section, include: :features
+    render json: @section, include: [ :features, :articles => {:include => {:author => {:only => :name}}} ]
   end
 
   # POST /sections
@@ -47,6 +47,6 @@ class Edit::SectionsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def section_params
-      params.require(:section).permit(:title, :short_title)
+      params.require(:section).permit(:title, :short_title, :top_story)
     end
 end
