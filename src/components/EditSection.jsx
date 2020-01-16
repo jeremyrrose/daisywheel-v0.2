@@ -1,7 +1,8 @@
 import React from 'react'
 import { getSectionToEdit, updateTopStory, addFeatured, removeFeatured } from '../services/ApiMethods.js'
+import { withRouter } from 'react-router-dom';
 import '../styles/EditSection.css'
-import Articles from './Articles.jsx'
+import Articles from './shared/Articles.jsx'
 
 class EditSection extends React.Component {
     constructor(props) {
@@ -51,6 +52,9 @@ class EditSection extends React.Component {
     }
 
     render() {
+
+        const sectionSelect = this.props.magazine && this.props.magazine.sections && this.props.magazine.sections.map((section, index) => <option key={index} value={section.id}>{section.title}</option>)
+
         return (
             <div className="sectionPage">
                 <div className="sectionEdit">
@@ -64,8 +68,11 @@ class EditSection extends React.Component {
                     <div className="sectionRight">
                         <div>
                             <label for="section">Choose a section:</label>
-                            <select name="section">
-                                <option>Stupid stories</option>
+                            <select name="section" value={this.props.match.params.id} onChange={(e) => {
+                                this.props.history.push(`/edit/sections/${e.target.value}`);
+                                this.setSection(e.target.value);
+                             }} >
+                                {sectionSelect}
                             </select>
                         </div>
                         <input type="search" placeholder={`Search within ${this.state.section ? this.state.section.title : null }`}></input>

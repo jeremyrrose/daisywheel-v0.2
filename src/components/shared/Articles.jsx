@@ -1,7 +1,7 @@
 import React from 'react';
-import { getArticlesToEdit } from '../services/ApiMethods.js'
-import ArticleCard from './shared/ArticleCard.jsx'
-import '../styles/Articles.css'
+import { getArticlesToEdit } from '../../services/ApiMethods.js'
+import ArticleCard from './ArticleCard.jsx'
+import '../../styles/Articles.css'
 
 class Articles extends React.Component {
     constructor(props) {

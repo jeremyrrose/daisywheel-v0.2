@@ -1,0 +1,24 @@
+.editSections {
+    display: flex;
+    flex-direction: column;
+}
+
+.editSections button {
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary-color);
+    background-color: var(--soft-primary-color);
+    width: 300px;
+    border: 0px;
+    padding: 6px 14px;
+    border-radius: 12px;
+    transition: .15s;
+    outline-style: none;
+    margin-top: 20px;
+}
+
+.editSections a:hover button {
+    color: var(--secondary-color);
+}

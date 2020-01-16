@@ -78,6 +78,7 @@ class NewArticle extends React.Component {
                 published={published}
                 updated_at={updated_at}
                 section_id={section_id}
+                sections={this.props.magazine.sections}
                 author_id={author_id}
                 onChange={this.changeHandler}
                 toggle={this.toggler}

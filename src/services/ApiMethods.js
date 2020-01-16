@@ -5,9 +5,22 @@ import Api from './ApiConfig'
 export const getMagazine = async () => {
   try {
     const resp = await Api.get(`/magazines/1`);
-    return resp.data;
+    console.log(resp.data)
+    let magazine = resp.data.magazine;
+    magazine.sections = resp.data.sections;
+    return magazine;
   } catch(error) {
     console.error(error)
+  }
+}
+
+export const updateMagazineTopStory = async (id) => {
+  console.log('halp2')
+  try {
+    const resp = await Api.put(`/edit/magazines/1`, {"top_story": id})
+    return resp;
+  } catch (error) {
+    throw error
   }
 }
 
@@ -70,6 +83,17 @@ export const updateTopStory = async (section_id,article_id) => {
   } catch (error) {
     throw error
   }
+}
+
+// feature methods
+
+export const getFeatures = async () => {
+  try {
+    const resp = await Api.get(`edit/features/`)
+    return resp.data
+  } catch (error) {
+    throw (error)
+  }  
 }
 
 export const addFeatured = async (section_id,article_id) => {

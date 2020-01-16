@@ -14,6 +14,7 @@ const ArticleForm = ({
     published,
     updated_at,
     section_id,
+    sections,
     author_id,
     onChange,
     toggle,
@@ -22,6 +23,7 @@ const ArticleForm = ({
 }) => {
 
     const header = id ? <h2>Edit Article</h2> : <h2>New Article</h2>
+    const sectionSelect = sections && sections.map((section, index) => <option key={index} value={section.id}>{section.title}</option>)
 
     return(
         <form className="articleForm" onSubmit={e => onSubmit(e)} >
@@ -30,8 +32,7 @@ const ArticleForm = ({
                 <div>
                     <label for="section_id">Section</label>
                     <select name="section_id" value={section_id} onChange={(e) => onChange(e)} >
-                        <option value="0">---</option>
-                        <option value="1">Random Articles</option>
+                        {sectionSelect}
                     </select>
                 </div>
             </div>

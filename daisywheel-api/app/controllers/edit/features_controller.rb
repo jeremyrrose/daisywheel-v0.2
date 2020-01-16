@@ -1,6 +1,13 @@
 class Edit::FeaturesController < ApplicationController
     before_action :set_feature, only: [:destroy]
   
+    # GET /features
+    def index
+      puts 'halp'
+      @features = Feature.where("section_id IS NULL")
+      render json: @features
+    end
+
     # POST /features
     def create
       @feature = Feature.new(feature_params)

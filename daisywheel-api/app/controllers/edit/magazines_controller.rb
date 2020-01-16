@@ -1,4 +1,4 @@
-class MagazinesController < ApplicationController
+class Edit::MagazinesController < ApplicationController
   before_action :set_magazine, only: [:show, :update, :destroy]
 
   # GET /magazines
@@ -34,11 +34,6 @@ class MagazinesController < ApplicationController
     end
   end
 
-  # DELETE /magazines/1
-  def destroy
-    @magazine.destroy
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_magazine
@@ -47,6 +42,6 @@ class MagazinesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def magazine_params
-      params.require(:magazine).permit(:title, :description, :header_image, :color_1, :color_2, :color_3, :color_4, :font_1, :font_2)
+      params.require(:magazine).permit(:title, :description, :header_image, :color_1, :color_2, :color_3, :color_4, :font_1, :font_2, :top_story)
     end
 end
