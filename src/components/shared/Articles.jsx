@@ -32,7 +32,7 @@ class Articles extends React.Component {
                 image={article.image}
                 title={article.title}
                 dek={article.dek}
-                author={article.author.name}
+                author={article.author ? article.author.name : `Staff`}
                 date={article.created_at}
                 published={article.published}
                 topToggle={this.props.topToggle}

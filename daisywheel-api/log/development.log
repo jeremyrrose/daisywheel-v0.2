@@ -49985,3 +49985,1810 @@ Processing by Edit::FeaturesController#index as HTML
 Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.5ms | Allocations: 1050)
 
 
+  [1m[35m (43.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5747818275467606310)[0m
+  [1m[35m (225.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to RenameStaticOnArticlesToStaticPage (20200116195842)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.1ms)[0m  [1m[35mALTER TABLE "articles" RENAME COLUMN "static" TO "static_page"[0m
+  [1m[36mprimary::SchemaMigration Create (15.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200116195842"]]
+  [1m[35m (74.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5747818275467606310)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/edit/sections/1" for ::1 at 2020-01-16 15:02:27 -0500
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Edit::SectionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSection Load (0.6ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:46:in `set_section'
+  [1m[36mCACHE Section Load (0.0ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:13:in `show'
+  [1m[36mFeature Load (2.4ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE "features"."section_id" = $1[0m  [["section_id", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mArticle Load (0.9ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."section_id" = $1[0m  [["section_id", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mAuthor Load (0.3ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.3ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.2ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+Completed 200 OK in 163ms (Views: 109.9ms | ActiveRecord: 6.2ms | Allocations: 34201)
+
+
+Started GET "/edit/sections/1/articles" for ::1 at 2020-01-16 15:03:32 -0500
+Processing by Edit::ArticlesController#index as HTML
+  Parameters: {"section_id"=>"1"}
+  [1m[36mArticle Load (0.9ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE (section_id = '1') AND (static_page = false) ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mAuthor Load (0.3ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.3ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+Completed 200 OK in 43ms (Views: 38.1ms | ActiveRecord: 1.7ms | Allocations: 8941)
+
+
+Started GET "/edit/sections/1/articles" for ::1 at 2020-01-16 15:04:29 -0500
+Processing by Edit::ArticlesController#index as HTML
+  Parameters: {"section_id"=>"1"}
+  [1m[36mArticle Load (1.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE (section_id = '1') AND (static_page = true) ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+Completed 200 OK in 27ms (Views: 14.1ms | ActiveRecord: 8.1ms | Allocations: 2603)
+
+
+Started GET "/edit/sections/1/articles" for ::1 at 2020-01-16 15:04:40 -0500
+Processing by Edit::ArticlesController#index as HTML
+  Parameters: {"section_id"=>"1"}
+  [1m[36mArticle Load (0.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE (section_id = '1') AND (static_page = false) ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mAuthor Load (1.8ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+Completed 200 OK in 147ms (Views: 101.6ms | ActiveRecord: 35.1ms | Allocations: 22830)
+
+
+Started GET "/edit/pages" for ::1 at 2020-01-16 15:10:37 -0500
+Processing by Edit::PagesController#index as HTML
+  [1m[36mArticle Load (0.7ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE (static_page = true)[0m
+  ↳ app/controllers/edit/pages_controller.rb:8:in `index'
+Completed 200 OK in 7ms (Views: 4.1ms | ActiveRecord: 0.7ms | Allocations: 2239)
+
+
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAuthor Load (0.3ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSection Load (0.5ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mArticle Update (0.7ms)[0m  [1m[33mUPDATE "articles" SET "static_page" = $1, "updated_at" = $2 WHERE "articles"."id" = $3[0m  [["static_page", true], ["updated_at", "2020-01-16 20:11:59.618065"], ["id", 1]]
+  [1m[35m (18.2ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/edit/pages" for ::1 at 2020-01-16 15:12:03 -0500
+Processing by Edit::PagesController#index as HTML
+  [1m[36mArticle Load (0.7ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE (static_page = true)[0m
+  ↳ app/controllers/edit/pages_controller.rb:8:in `index'
+Completed 200 OK in 50ms (Views: 47.3ms | ActiveRecord: 0.7ms | Allocations: 8760)
+
+
+Started GET "/edit/sections/2" for ::1 at 2020-01-16 15:12:20 -0500
+Processing by Edit::SectionsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSection Load (0.4ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:46:in `set_section'
+  [1m[36mCACHE Section Load (0.0ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:13:in `show'
+  [1m[36mFeature Load (0.7ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE "features"."section_id" = $1[0m  [["section_id", 2]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."section_id" = $1[0m  [["section_id", 2]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mAuthor Load (0.6ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+Completed 200 OK in 52ms (Views: 27.8ms | ActiveRecord: 13.3ms | Allocations: 14974)
+
+
+Started GET "/edit/sections/1" for ::1 at 2020-01-16 15:12:21 -0500
+Processing by Edit::SectionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSection Load (3.4ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:46:in `set_section'
+  [1m[36mCACHE Section Load (0.0ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:13:in `show'
+  [1m[36mFeature Load (0.6ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE "features"."section_id" = $1[0m  [["section_id", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mArticle Load (2.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."section_id" = $1[0m  [["section_id", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mAuthor Load (3.2ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.2ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+Completed 200 OK in 75ms (Views: 52.2ms | ActiveRecord: 11.9ms | Allocations: 14820)
+
+
+Started GET "/edit/sections/1" for ::1 at 2020-01-16 15:14:48 -0500
+Processing by Edit::SectionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSection Load (4.5ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:46:in `set_section'
+  [1m[36mCACHE Section Load (0.0ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:13:in `show'
+  [1m[36mFeature Load (2.7ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE "features"."section_id" = $1[0m  [["section_id", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."section_id" = $1[0m  [["section_id", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mAuthor Load (0.4ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.2ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+Completed 200 OK in 60ms (Views: 45.3ms | ActiveRecord: 8.6ms | Allocations: 11535)
+
+
+Started GET "/magazines/1" for ::1 at 2020-01-16 15:14:48 -0500
+Processing by MagazinesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMagazine Load (3.3ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:45:in `set_magazine'
+  [1m[36mSection Load (0.5ms)[0m  [1m[34mSELECT id, title, short_title FROM "sections"[0m
+  ↳ app/controllers/magazines_controller.rb:14:in `show'
+Completed 200 OK in 110ms (Views: 5.8ms | ActiveRecord: 11.4ms | Allocations: 10029)
+
+
+Started GET "/articles/1" for ::1 at 2020-01-16 15:14:56 -0500
+Processing by ArticlesController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:46:in `set_article'
+Completed 200 OK in 16ms (Views: 0.8ms | ActiveRecord: 0.6ms | Allocations: 978)
+
+
+Started GET "/edit/articles/broken.jpg" for 127.0.0.1 at 2020-01-16 15:14:56 -0500
+Processing by Edit::ArticlesController#show as JPEG
+  Parameters: {"id"=>"broken"}
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:49:in `set_article'
+Completed 404 Not Found in 4ms (ActiveRecord: 0.4ms | Allocations: 655)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Article with 'id'=broken):
+  
+app/controllers/edit/articles_controller.rb:49:in `set_article'
+Started GET "/edit/sections/1" for ::1 at 2020-01-16 15:15:36 -0500
+Processing by Edit::SectionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSection Load (2.3ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:46:in `set_section'
+  [1m[36mCACHE Section Load (0.0ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:13:in `show'
+  [1m[36mFeature Load (0.4ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE "features"."section_id" = $1[0m  [["section_id", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."section_id" = $1[0m  [["section_id", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mAuthor Load (1.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+Completed 200 OK in 56ms (Views: 44.5ms | ActiveRecord: 4.7ms | Allocations: 11534)
+
+
+Started GET "/edit/sections/1" for ::1 at 2020-01-16 15:16:16 -0500
+Processing by Edit::SectionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSection Load (0.5ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:46:in `set_section'
+  [1m[36mCACHE Section Load (0.0ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:13:in `show'
+  [1m[36mFeature Load (1.2ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE "features"."section_id" = $1[0m  [["section_id", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+Started GET "/magazines/1" for ::1 at 2020-01-16 15:16:16 -0500
+  [1m[36mArticle Load (1.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."section_id" = $1[0m  [["section_id", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mAuthor Load (3.2ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+Processing by MagazinesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+Completed 200 OK in 84ms (Views: 75.0ms | ActiveRecord: 6.5ms | Allocations: 14725)
+
+
+  [1m[36mMagazine Load (3.7ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:45:in `set_magazine'
+  [1m[36mSection Load (0.8ms)[0m  [1m[34mSELECT id, title, short_title FROM "sections"[0m
+  ↳ app/controllers/magazines_controller.rb:14:in `show'
+Completed 200 OK in 33ms (Views: 10.3ms | ActiveRecord: 15.5ms | Allocations: 4499)
+
+
+Started GET "/edit/articles" for ::1 at 2020-01-16 15:16:26 -0500
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (3.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mAuthor Load (1.3ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.4ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+Completed 200 OK in 107ms (Views: 101.2ms | ActiveRecord: 5.1ms | Allocations: 9937)
+
+
+Started GET "/edit/features/" for ::1 at 2020-01-16 15:16:26 -0500
+Processing by Edit::FeaturesController#index as HTML
+  [1m[36mFeature Load (0.8ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE (section_id IS NULL)[0m
+  ↳ app/controllers/edit/features_controller.rb:8:in `index'
+Completed 200 OK in 5ms (Views: 3.1ms | ActiveRecord: 0.8ms | Allocations: 1086)
+
+
+Started GET "/edit/sections/1" for ::1 at 2020-01-16 15:16:32 -0500
+Processing by Edit::SectionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSection Load (4.6ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:46:in `set_section'
+  [1m[36mCACHE Section Load (0.0ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:13:in `show'
+  [1m[36mFeature Load (3.6ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE "features"."section_id" = $1[0m  [["section_id", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mArticle Load (0.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."section_id" = $1[0m  [["section_id", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mAuthor Load (6.4ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.3ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.2ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+Completed 200 OK in 104ms (Views: 82.4ms | ActiveRecord: 16.1ms | Allocations: 11544)
+
+
+Started GET "/edit/sections/2" for ::1 at 2020-01-16 15:16:36 -0500
+Processing by Edit::SectionsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSection Load (1.4ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:46:in `set_section'
+  [1m[36mCACHE Section Load (0.3ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:13:in `show'
+  [1m[36mFeature Load (1.1ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE "features"."section_id" = $1[0m  [["section_id", 2]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mArticle Load (1.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."section_id" = $1[0m  [["section_id", 2]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mAuthor Load (0.6ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+Completed 200 OK in 32ms (Views: 22.6ms | ActiveRecord: 4.7ms | Allocations: 4224)
+
+
+Started GET "/edit/sections/1" for ::1 at 2020-01-16 15:16:47 -0500
+Processing by Edit::SectionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSection Load (0.5ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:46:in `set_section'
+  [1m[36mCACHE Section Load (0.0ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:13:in `show'
+  [1m[36mFeature Load (0.4ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE "features"."section_id" = $1[0m  [["section_id", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mArticle Load (0.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."section_id" = $1[0m  [["section_id", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mAuthor Load (0.6ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.2ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.2ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+Completed 200 OK in 69ms (Views: 62.5ms | ActiveRecord: 2.8ms | Allocations: 11535)
+
+
+Started GET "/edit/pages" for ::1 at 2020-01-16 15:18:25 -0500
+Processing by Edit::PagesController#index as HTML
+  [1m[36mArticle Load (0.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE (static_page = true)[0m
+  ↳ app/controllers/edit/pages_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.6ms | Allocations: 1052)
+
+
+Started GET "/edit/pages" for ::1 at 2020-01-16 15:19:19 -0500
+Processing by Edit::PagesController#index as HTML
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE (static_page = true)[0m
+  ↳ app/controllers/edit/pages_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.5ms | Allocations: 1052)
+
+
+Started GET "/edit/pages" for ::1 at 2020-01-16 15:20:53 -0500
+Processing by Edit::PagesController#index as HTML
+  [1m[36mArticle Load (1.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE (static_page = true)[0m
+  ↳ app/controllers/edit/pages_controller.rb:8:in `index'
+Completed 200 OK in 80ms (Views: 38.9ms | ActiveRecord: 23.2ms | Allocations: 10587)
+
+
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAuthor Load (0.4ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Started GET "/edit/pages" for ::1 at 2020-01-16 15:23:09 -0500
+Processing by Edit::PagesController#index as HTML
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE (static_page = true)[0m
+  ↳ app/controllers/edit/pages_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.4ms | Allocations: 1052)
+
+
+Started GET "/new/broken.jpg" for 127.0.0.1 at 2020-01-16 15:25:10 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/new/broken.jpg"):
+  
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.1.1) lib/rack/runtime.rb:24:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.1.1) lib/rack/sendfile.rb:113:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/new/broken.jpg" for 127.0.0.1 at 2020-01-16 15:27:48 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/new/broken.jpg"):
+  
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.1.1) lib/rack/runtime.rb:24:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.1.1) lib/rack/sendfile.rb:113:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/magazines/1" for ::1 at 2020-01-16 15:27:48 -0500
+Processing by MagazinesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMagazine Load (9.5ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:45:in `set_magazine'
+  [1m[36mSection Load (0.4ms)[0m  [1m[34mSELECT id, title, short_title FROM "sections"[0m
+  ↳ app/controllers/magazines_controller.rb:14:in `show'
+Completed 200 OK in 91ms (Views: 13.6ms | ActiveRecord: 37.0ms | Allocations: 14789)
+
+
+Started GET "/new/broken.jpg" for 127.0.0.1 at 2020-01-16 15:28:35 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/new/broken.jpg"):
+  
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.1.1) lib/rack/runtime.rb:24:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.1.1) lib/rack/sendfile.rb:113:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/magazines/1" for ::1 at 2020-01-16 15:28:35 -0500
+Processing by MagazinesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMagazine Load (0.6ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:45:in `set_magazine'
+  [1m[36mSection Load (1.3ms)[0m  [1m[34mSELECT id, title, short_title FROM "sections"[0m
+  ↳ app/controllers/magazines_controller.rb:14:in `show'
+Completed 200 OK in 8ms (Views: 3.7ms | ActiveRecord: 1.9ms | Allocations: 1754)
+
+
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSection Load (0.5ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+Started GET "/edit/articles" for ::1 at 2020-01-16 15:30:24 -0500
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (0.7ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+Started POST "/edit/articles" for ::1 at 2020-01-16 15:30:24 -0500
+  [1m[36mAuthor Load (1.9ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by Edit::ArticlesController#create as HTML
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  Parameters: {"title"=>"About this magazine", "dek"=>"All you need to know", "content"=>"We are collecting your information to sell it.<div><br></div><div>You actually wrote the entire site using your unconscious mind.</div>", "published"=>true, "section_id"=>"0", "article"=>{"title"=>"About this magazine", "dek"=>"All you need to know", "content"=>"We are collecting your information to sell it.<div><br></div><div>You actually wrote the entire site using your unconscious mind.</div>", "published"=>true, "section_id"=>"0"}}
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 16ms (Views: 11.7ms | ActiveRecord: 0.0ms | Allocations: 1578)
+
+
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+Completed 200 OK in 141ms (Views: 130.7ms | ActiveRecord: 9.0ms | Allocations: 18899)
+
+
+Started GET "/edit/features/" for ::1 at 2020-01-16 15:30:25 -0500
+Processing by Edit::FeaturesController#index as HTML
+  [1m[36mFeature Load (4.3ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE (section_id IS NULL)[0m
+  ↳ app/controllers/edit/features_controller.rb:8:in `index'
+Completed 200 OK in 42ms (Views: 29.4ms | ActiveRecord: 10.6ms | Allocations: 5349)
+
+
+Started GET "/edit/pages" for ::1 at 2020-01-16 15:30:40 -0500
+Processing by Edit::PagesController#index as HTML
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE (static_page = true)[0m
+  ↳ app/controllers/edit/pages_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.5ms | Allocations: 1052)
+
+
+Started GET "/new/broken.jpg" for 127.0.0.1 at 2020-01-16 15:31:48 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/new/broken.jpg"):
+  
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.1.1) lib/rack/runtime.rb:24:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.1.1) lib/rack/sendfile.rb:113:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/edit/articles" for ::1 at 2020-01-16 15:32:48 -0500
+Processing by Edit::ArticlesController#create as HTML
+  Parameters: {"title"=>"This story is stupid", "dek"=>"So it really fits", "content"=>"It's a static page.<div><br></div><div>Check it out.</div>", "published"=>false, "section_id"=>"0", "author_id"=>"0", "article"=>{"title"=>"This story is stupid", "dek"=>"So it really fits", "content"=>"It's a static page.<div><br></div><div>Check it out.</div>", "published"=>false, "section_id"=>"0", "author_id"=>"0"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/edit/articles_controller.rb:25:in `create'
+  [1m[36mAuthor Load (0.5ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:25:in `create'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/edit/articles_controller.rb:25:in `create'
+Completed 422 Unprocessable Entity in 19ms (Views: 0.3ms | ActiveRecord: 1.0ms | Allocations: 3150)
+
+
+Started GET "/edit/articles" for ::1 at 2020-01-16 15:32:48 -0500
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (0.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mAuthor Load (2.5ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.3ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.3ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+Completed 200 OK in 68ms (Views: 63.7ms | ActiveRecord: 4.0ms | Allocations: 9900)
+
+
+Started GET "/edit/features/" for ::1 at 2020-01-16 15:32:48 -0500
+Processing by Edit::FeaturesController#index as HTML
+  [1m[36mFeature Load (5.4ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE (section_id IS NULL)[0m
+  ↳ app/controllers/edit/features_controller.rb:8:in `index'
+Completed 200 OK in 13ms (Views: 5.7ms | ActiveRecord: 5.4ms | Allocations: 1050)
+
+
+Started GET "/new/broken.jpg" for 127.0.0.1 at 2020-01-16 15:33:54 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/new/broken.jpg"):
+  
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.1.1) lib/rack/runtime.rb:24:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.1.1) lib/rack/sendfile.rb:113:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/edit/articles" for ::1 at 2020-01-16 15:34:27 -0500
+Started GET "/edit/articles" for ::1 at 2020-01-16 15:34:27 -0500
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (2.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+Processing by Edit::ArticlesController#create as HTML
+  Parameters: {"title"=>"This is a secret", "dek"=>"We'll keep it as a draft", "content"=>"Here's what's up:<div><br></div><div>People can hear each other.</div>", "published"=>false, "section_id"=>"0", "author_id"=>"0", "article"=>{"title"=>"This is a secret", "dek"=>"We'll keep it as a draft", "content"=>"Here's what's up:<div><br></div><div>People can hear each other.</div>", "published"=>false, "section_id"=>"0", "author_id"=>"0"}}
+  [1m[35m (2.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/edit/articles_controller.rb:25:in `create'
+  [1m[36mAuthor Load (8.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mArticle Create (113.5ms)[0m  [1m[32mINSERT INTO "articles" ("title", "dek", "content", "created_at", "updated_at", "section_id", "author_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "This is a secret"], ["dek", "We'll keep it as a draft"], ["content", "Here's what's up:<div><br></div><div>People can hear each other.</div>"], ["created_at", "2020-01-16 20:34:27.702524"], ["updated_at", "2020-01-16 20:34:27.702524"], ["section_id", 0], ["author_id", 0]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.3ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:25:in `create'
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (7.8ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/edit/articles_controller.rb:25:in `create'
+Completed 500 Internal Server Error in 273ms (ActiveRecord: 195.1ms | Allocations: 19695)
+
+
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  
+ActiveRecord::InvalidForeignKey (PG::ForeignKeyViolation: ERROR:  insert or update on table "articles" violates foreign key constraint "fk_rails_582ee7da77"
+DETAIL:  Key (section_id)=(0) is not present in table "sections".
+):
+  
+app/controllers/edit/articles_controller.rb:25:in `create'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+Completed 200 OK in 835ms (Views: 759.4ms | ActiveRecord: 53.6ms | Allocations: 288089)
+
+
+Started GET "/edit/features/" for ::1 at 2020-01-16 15:34:28 -0500
+Processing by Edit::FeaturesController#index as HTML
+  [1m[36mFeature Load (0.6ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE (section_id IS NULL)[0m
+  ↳ app/controllers/edit/features_controller.rb:8:in `index'
+Completed 200 OK in 30ms (Views: 16.5ms | ActiveRecord: 9.4ms | Allocations: 9509)
+
+
+Started GET "/edit/articles" for ::1 at 2020-01-16 15:38:41 -0500
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (1.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mAuthor Load (0.7ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+Completed 200 OK in 64ms (Views: 55.9ms | ActiveRecord: 3.9ms | Allocations: 10011)
+
+
+Started GET "/magazines/1" for ::1 at 2020-01-16 15:38:41 -0500
+Processing by MagazinesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMagazine Load (0.6ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:45:in `set_magazine'
+  [1m[36mSection Load (0.5ms)[0m  [1m[34mSELECT id, title, short_title FROM "sections"[0m
+  ↳ app/controllers/magazines_controller.rb:14:in `show'
+Completed 200 OK in 69ms (Views: 23.5ms | ActiveRecord: 15.7ms | Allocations: 14936)
+
+
+Started GET "/edit/features/" for ::1 at 2020-01-16 15:38:41 -0500
+Processing by Edit::FeaturesController#index as HTML
+  [1m[36mFeature Load (0.9ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE (section_id IS NULL)[0m
+  ↳ app/controllers/edit/features_controller.rb:8:in `index'
+Completed 200 OK in 6ms (Views: 3.9ms | ActiveRecord: 0.9ms | Allocations: 1050)
+
+
+Started GET "/new/broken.jpg" for 127.0.0.1 at 2020-01-16 15:38:55 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/new/broken.jpg"):
+  
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.1.1) lib/rack/runtime.rb:24:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.1.1) lib/rack/sendfile.rb:113:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/edit/articles" for ::1 at 2020-01-16 15:39:39 -0500
+Processing by Edit::ArticlesController#create as HTML
+  Parameters: {"title"=>"Editor's note", "dek"=>"From the only author", "content"=>"There's a lot to say, which...<div><br></div><div>...we'll get to eventually.</div>", "published"=>false, "author_id"=>"1", "article"=>{"title"=>"Editor's note", "dek"=>"From the only author", "content"=>"There's a lot to say, which...<div><br></div><div>...we'll get to eventually.</div>", "published"=>false, "author_id"=>"1"}}
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/edit/articles_controller.rb:25:in `create'
+Started GET "/edit/articles" for ::1 at 2020-01-16 15:39:39 -0500
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Create (6.5ms)[0m  [1m[32mINSERT INTO "articles" ("title", "dek", "content", "created_at", "updated_at", "author_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Editor's note"], ["dek", "From the only author"], ["content", "There's a lot to say, which...<div><br></div><div>...we'll get to eventually.</div>"], ["created_at", "2020-01-16 20:39:39.387729"], ["updated_at", "2020-01-16 20:39:39.387729"], ["author_id", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:25:in `create'
+  [1m[36mArticle Load (1.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mAuthor Load (1.7ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (47.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  ↳ app/controllers/edit/articles_controller.rb:25:in `create'
+Completed 201 Created in 87ms (Views: 5.8ms | ActiveRecord: 54.6ms | Allocations: 7105)
+
+
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.3ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+Completed 200 OK in 145ms (Views: 139.8ms | ActiveRecord: 3.7ms | Allocations: 11633)
+
+
+Started GET "/edit/features/" for ::1 at 2020-01-16 15:39:39 -0500
+Processing by Edit::FeaturesController#index as HTML
+  [1m[36mFeature Load (0.7ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE (section_id IS NULL)[0m
+  ↳ app/controllers/edit/features_controller.rb:8:in `index'
+Completed 200 OK in 6ms (Views: 4.8ms | ActiveRecord: 0.7ms | Allocations: 1050)
+
+
+Started GET "/edit/pages" for ::1 at 2020-01-16 15:40:02 -0500
+Processing by Edit::PagesController#index as HTML
+  [1m[36mArticle Load (3.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE (static_page = true)[0m
+  ↳ app/controllers/edit/pages_controller.rb:8:in `index'
+Completed 200 OK in 10ms (Views: 5.3ms | ActiveRecord: 3.2ms | Allocations: 1089)
+
+
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY "articles"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Started GET "/edit/articles" for ::1 at 2020-01-16 15:41:16 -0500
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (0.7ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mAuthor Load (1.7ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Started GET "/magazines/1" for ::1 at 2020-01-16 15:41:16 -0500
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+Processing by MagazinesController#show as HTML
+  [1m[36mCACHE Author Load (0.2ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Parameters: {"id"=>"1"}
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mMagazine Load (5.7ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  ↳ app/controllers/magazines_controller.rb:45:in `set_magazine'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSection Load (0.5ms)[0m  [1m[34mSELECT id, title, short_title FROM "sections"[0m
+  ↳ app/controllers/magazines_controller.rb:14:in `show'
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+Completed 200 OK in 104ms (Views: 100.2ms | ActiveRecord: 2.9ms | Allocations: 13617)
+
+
+Completed 200 OK in 37ms (Views: 10.2ms | ActiveRecord: 6.3ms | Allocations: 7101)
+
+
+Started GET "/edit/features/" for ::1 at 2020-01-16 15:41:16 -0500
+Processing by Edit::FeaturesController#index as HTML
+  [1m[36mFeature Load (4.2ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE (section_id IS NULL)[0m
+  ↳ app/controllers/edit/features_controller.rb:8:in `index'
+Completed 200 OK in 8ms (Views: 3.6ms | ActiveRecord: 4.2ms | Allocations: 1050)
+
+
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY "articles"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mArticle Destroy (44.3ms)[0m  [1m[31mDELETE FROM "articles" WHERE "articles"."id" = $1[0m  [["id", 10]]
+Started GET "/new/broken.jpg" for 127.0.0.1 at 2020-01-16 15:41:46 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/new/broken.jpg"):
+  
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.1.1) lib/rack/runtime.rb:24:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.1.1) lib/rack/sendfile.rb:113:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/edit/articles" for ::1 at 2020-01-16 15:42:06 -0500
+Processing by Edit::ArticlesController#create as HTML
+  Parameters: {"title"=>"Editor's note", "dek"=>"Here it is", "content"=>"So much to say.", "published"=>false, "static_page"=>true, "article"=>{"title"=>"Editor's note", "dek"=>"Here it is", "content"=>"So much to say.", "published"=>false, "static_page"=>true}}
+[31mUnpermitted parameter: :static_page[0m
+Started GET "/edit/articles" for ::1 at 2020-01-16 15:42:06 -0500
+Processing by Edit::ArticlesController#index as HTML
+[31mUnpermitted parameter: :static_page[0m
+  [1m[36mArticle Load (4.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[35m (13.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/edit/articles_controller.rb:25:in `create'
+  [1m[36mAuthor Load (6.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mArticle Create (10.9ms)[0m  [1m[32mINSERT INTO "articles" ("title", "dek", "content", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Editor's note"], ["dek", "Here it is"], ["content", "So much to say."], ["created_at", "2020-01-16 20:42:06.739314"], ["updated_at", "2020-01-16 20:42:06.739314"]]
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:25:in `create'
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[35m (58.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:25:in `create'
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+Completed 201 Created in 146ms (Views: 1.2ms | ActiveRecord: 82.7ms | Allocations: 10207)
+
+
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+Completed 200 OK in 155ms (Views: 142.3ms | ActiveRecord: 10.6ms | Allocations: 12587)
+
+
+Started GET "/edit/features/" for ::1 at 2020-01-16 15:42:06 -0500
+Processing by Edit::FeaturesController#index as HTML
+  [1m[36mFeature Load (1.8ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE (section_id IS NULL)[0m
+  ↳ app/controllers/edit/features_controller.rb:8:in `index'
+Completed 200 OK in 14ms (Views: 12.1ms | ActiveRecord: 1.8ms | Allocations: 1050)
+
+
+Started GET "/edit/pages" for ::1 at 2020-01-16 15:42:14 -0500
+Processing by Edit::PagesController#index as HTML
+  [1m[36mArticle Load (1.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE (static_page = true)[0m
+  ↳ app/controllers/edit/pages_controller.rb:8:in `index'
+Completed 200 OK in 5ms (Views: 3.0ms | ActiveRecord: 1.6ms | Allocations: 1052)
+
+
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY "articles"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Started GET "/edit/articles" for ::1 at 2020-01-16 15:43:50 -0500
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (2.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mAuthor Load (1.6ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Started GET "/magazines/1" for ::1 at 2020-01-16 15:43:50 -0500
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by MagazinesController#show as HTML
+  Parameters: {"id"=>"1"}
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mMagazine Load (8.9ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:45:in `set_magazine'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mSection Load (9.1ms)[0m  [1m[34mSELECT id, title, short_title FROM "sections"[0m
+  ↳ app/controllers/magazines_controller.rb:14:in `show'
+Completed 200 OK in 37ms (Views: 7.9ms | ActiveRecord: 18.0ms | Allocations: 3959)
+
+
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+Completed 200 OK in 100ms (Views: 93.4ms | ActiveRecord: 4.2ms | Allocations: 13269)
+
+
+Started GET "/edit/features/" for ::1 at 2020-01-16 15:43:50 -0500
+Processing by Edit::FeaturesController#index as HTML
+  [1m[36mFeature Load (0.5ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE (section_id IS NULL)[0m
+  ↳ app/controllers/edit/features_controller.rb:8:in `index'
+Completed 200 OK in 8ms (Views: 7.0ms | ActiveRecord: 0.5ms | Allocations: 1050)
+
+
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY "articles"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mArticle Destroy (17.8ms)[0m  [1m[31mDELETE FROM "articles" WHERE "articles"."id" = $1[0m  [["id", 11]]
+Started GET "/edit/articles" for ::1 at 2020-01-16 15:44:04 -0500
+Started GET "/magazines/1" for ::1 at 2020-01-16 15:44:04 -0500
+Processing by Edit::ArticlesController#index as HTML
+Processing by MagazinesController#show as HTML
+  [1m[36mArticle Load (0.9ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  Parameters: {"id"=>"1"}
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mAuthor Load (0.4ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mMagazine Load (6.1ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:45:in `set_magazine'
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSection Load (1.3ms)[0m  [1m[34mSELECT id, title, short_title FROM "sections"[0m
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  ↳ app/controllers/magazines_controller.rb:14:in `show'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+Completed 200 OK in 30ms (Views: 7.2ms | ActiveRecord: 7.4ms | Allocations: 5062)
+
+
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.3ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+Completed 200 OK in 91ms (Views: 88.1ms | ActiveRecord: 1.9ms | Allocations: 12135)
+
+
+Started GET "/edit/features/" for ::1 at 2020-01-16 15:44:04 -0500
+Processing by Edit::FeaturesController#index as HTML
+  [1m[36mFeature Load (0.9ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE (section_id IS NULL)[0m
+  ↳ app/controllers/edit/features_controller.rb:8:in `index'
+Completed 200 OK in 9ms (Views: 6.3ms | ActiveRecord: 0.9ms | Allocations: 1050)
+
+
+Started GET "/new/broken.jpg" for 127.0.0.1 at 2020-01-16 15:44:12 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/new/broken.jpg"):
+  
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.1.1) lib/rack/runtime.rb:24:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.1.1) lib/rack/sendfile.rb:113:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/edit/articles" for ::1 at 2020-01-16 15:44:27 -0500
+Processing by Edit::ArticlesController#create as HTML
+  Parameters: {"title"=>"Note", "dek"=>"of concern", "content"=>"Here it is.", "published"=>false, "author_id"=>"1", "static_page"=>true, "article"=>{"title"=>"Note", "dek"=>"of concern", "content"=>"Here it is.", "published"=>false, "static_page"=>true, "author_id"=>"1"}}
+[31mUnpermitted parameter: :static_page[0m
+[31mUnpermitted parameter: :static_page[0m
+  [1m[35m (1.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/edit/articles_controller.rb:25:in `create'
+  [1m[36mArticle Create (4.9ms)[0m  [1m[32mINSERT INTO "articles" ("title", "dek", "content", "created_at", "updated_at", "author_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Note"], ["dek", "of concern"], ["content", "Here it is."], ["created_at", "2020-01-16 20:44:27.555679"], ["updated_at", "2020-01-16 20:44:27.555679"], ["author_id", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:25:in `create'
+Started GET "/edit/articles" for ::1 at 2020-01-16 15:44:27 -0500
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (3.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mAuthor Load (4.9ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (90.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/edit/articles_controller.rb:25:in `create'
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+Completed 201 Created in 128ms (Views: 1.3ms | ActiveRecord: 97.0ms | Allocations: 11548)
+
+
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+Completed 200 OK in 118ms (Views: 98.7ms | ActiveRecord: 8.5ms | Allocations: 10836)
+
+
+Started GET "/edit/features/" for ::1 at 2020-01-16 15:44:27 -0500
+Processing by Edit::FeaturesController#index as HTML
+  [1m[36mFeature Load (2.8ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE (section_id IS NULL)[0m
+  ↳ app/controllers/edit/features_controller.rb:8:in `index'
+Completed 200 OK in 25ms (Views: 19.6ms | ActiveRecord: 2.8ms | Allocations: 1050)
+
+
+Started GET "/edit/pages" for ::1 at 2020-01-16 15:44:49 -0500
+Processing by Edit::PagesController#index as HTML
+  [1m[36mArticle Load (0.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE (static_page = true)[0m
+  ↳ app/controllers/edit/pages_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.6ms | Allocations: 1052)
+
+
+  [1m[36mArticle Load (1.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY "articles"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mArticle Destroy (20.3ms)[0m  [1m[31mDELETE FROM "articles" WHERE "articles"."id" = $1[0m  [["id", 12]]
+Started GET "/new/broken.jpg" for 127.0.0.1 at 2020-01-16 15:46:26 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/new/broken.jpg"):
+  
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.1.1) lib/rack/runtime.rb:24:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.1.1) lib/rack/sendfile.rb:113:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/edit/articles" for ::1 at 2020-01-16 15:46:53 -0500
+Processing by Edit::ArticlesController#create as HTML
+  Parameters: {"title"=>"mySplice", "dek"=>"is a site", "content"=>"No it's not!", "published"=>false, "author_id"=>"1", "static_page"=>true, "article"=>{"title"=>"mySplice", "dek"=>"is a site", "content"=>"No it's not!", "published"=>false, "static_page"=>true, "author_id"=>"1"}}
+Started GET "/edit/articles" for ::1 at 2020-01-16 15:46:54 -0500
+  [1m[35m (5.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/edit/articles_controller.rb:25:in `create'
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (1.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mArticle Create (6.8ms)[0m  [1m[32mINSERT INTO "articles" ("title", "dek", "content", "static_page", "created_at", "updated_at", "author_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "mySplice"], ["dek", "is a site"], ["content", "No it's not!"], ["static_page", true], ["created_at", "2020-01-16 20:46:54.048778"], ["updated_at", "2020-01-16 20:46:54.048778"], ["author_id", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:25:in `create'
+  [1m[36mAuthor Load (3.5ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+Completed 200 OK in 81ms (Views: 62.5ms | ActiveRecord: 17.0ms | Allocations: 15157)
+
+
+  [1m[35m (96.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/edit/articles_controller.rb:25:in `create'
+Completed 201 Created in 179ms (Views: 3.2ms | ActiveRecord: 123.3ms | Allocations: 26490)
+
+
+Started GET "/edit/features/" for ::1 at 2020-01-16 15:46:54 -0500
+Processing by Edit::FeaturesController#index as HTML
+  [1m[36mFeature Load (2.3ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE (section_id IS NULL)[0m
+  ↳ app/controllers/edit/features_controller.rb:8:in `index'
+Completed 200 OK in 78ms (Views: 41.8ms | ActiveRecord: 20.2ms | Allocations: 5314)
+
+
+Started GET "/edit/pages" for ::1 at 2020-01-16 15:47:02 -0500
+Processing by Edit::PagesController#index as HTML
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE (static_page = true)[0m
+  ↳ app/controllers/edit/pages_controller.rb:8:in `index'
+Completed 200 OK in 7ms (Views: 5.4ms | ActiveRecord: 0.4ms | Allocations: 1283)
+
+
+Started GET "/edit/articles" for ::1 at 2020-01-16 15:48:30 -0500
+Started GET "/magazines/1" for ::1 at 2020-01-16 15:48:30 -0500
+Processing by Edit::ArticlesController#index as HTML
+Processing by MagazinesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (5.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mAuthor Load (0.7ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mMagazine Load (2.9ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Author Load (0.2ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:45:in `set_magazine'
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSection Load (0.5ms)[0m  [1m[34mSELECT id, title, short_title FROM "sections"[0m
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  ↳ app/controllers/magazines_controller.rb:14:in `show'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 175ms (Views: 76.7ms | ActiveRecord: 40.7ms | Allocations: 19709)
+
+
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+Completed 200 OK in 226ms (Views: 217.8ms | ActiveRecord: 6.4ms | Allocations: 26604)
+
+
+Started GET "/edit/features/" for ::1 at 2020-01-16 15:48:30 -0500
+Processing by Edit::FeaturesController#index as HTML
+  [1m[36mFeature Load (1.2ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE (section_id IS NULL)[0m
+  ↳ app/controllers/edit/features_controller.rb:8:in `index'
+Completed 200 OK in 15ms (Views: 13.3ms | ActiveRecord: 1.2ms | Allocations: 1050)
+
+
+Started GET "/new/broken.jpg" for 127.0.0.1 at 2020-01-16 15:48:52 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/new/broken.jpg"):
+  
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.1.1) lib/rack/runtime.rb:24:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.1.1) lib/rack/sendfile.rb:113:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/edit/articles" for ::1 at 2020-01-16 15:49:33 -0500
+Processing by Edit::ArticlesController#create as HTML
+  Parameters: {"title"=>"THere's NO AUthoerrr", "dek"=>"at llalalaaalalllll", "content"=>"BLAAAAAA<div><br></div><div>BLA</div><div><br></div><div>BLA</div>", "published"=>false, "static_page"=>true, "article"=>{"title"=>"THere's NO AUthoerrr", "dek"=>"at llalalaaalalllll", "content"=>"BLAAAAAA<div><br></div><div>BLA</div><div><br></div><div>BLA</div>", "published"=>false, "static_page"=>true}}
+  [1m[35m (2.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/edit/articles_controller.rb:25:in `create'
+  [1m[36mArticle Create (2.0ms)[0m  [1m[32mINSERT INTO "articles" ("title", "dek", "content", "static_page", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "THere's NO AUthoerrr"], ["dek", "at llalalaaalalllll"], ["content", "BLAAAAAA<div><br></div><div>BLA</div><div><br></div><div>BLA</div>"], ["static_page", true], ["created_at", "2020-01-16 20:49:33.176862"], ["updated_at", "2020-01-16 20:49:33.176862"]]
+  ↳ app/controllers/edit/articles_controller.rb:25:in `create'
+Started GET "/edit/articles" for ::1 at 2020-01-16 15:49:33 -0500
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (0.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mAuthor Load (0.5ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.3ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[35m (23.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:25:in `create'
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 201 Created in 65ms (Views: 1.0ms | ActiveRecord: 28.2ms | Allocations: 7699)
+
+
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+Completed 200 OK in 85ms (Views: 82.6ms | ActiveRecord: 1.8ms | Allocations: 11951)
+
+
+Started GET "/edit/features/" for ::1 at 2020-01-16 15:49:33 -0500
+Processing by Edit::FeaturesController#index as HTML
+  [1m[36mFeature Load (3.2ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE (section_id IS NULL)[0m
+  ↳ app/controllers/edit/features_controller.rb:8:in `index'
+Completed 200 OK in 11ms (Views: 7.1ms | ActiveRecord: 3.2ms | Allocations: 1050)
+
+
+Started GET "/edit/pages" for ::1 at 2020-01-16 15:49:48 -0500
+Processing by Edit::PagesController#index as HTML
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE (static_page = true)[0m
+  ↳ app/controllers/edit/pages_controller.rb:8:in `index'
+Completed 200 OK in 7ms (Views: 6.0ms | ActiveRecord: 0.3ms | Allocations: 1465)
+
+
+Started GET "/articles/13" for ::1 at 2020-01-16 15:58:26 -0500
+Started GET "/edit/articles/broken.jpg" for 127.0.0.1 at 2020-01-16 15:58:26 -0500
+Processing by Edit::ArticlesController#show as JPEG
+  Parameters: {"id"=>"broken"}
+  [1m[36mArticle Load (0.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:49:in `set_article'
+Completed 404 Not Found in 8ms (ActiveRecord: 1.2ms | Allocations: 1139)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Article with 'id'=broken):
+  
+app/controllers/edit/articles_controller.rb:49:in `set_article'
+Processing by ArticlesController#show as */*
+  Parameters: {"id"=>"13"}
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:46:in `set_article'
+Completed 200 OK in 4ms (Views: 0.5ms | ActiveRecord: 0.8ms | Allocations: 967)
+
+
+Started GET "/edit/articles" for ::1 at 2020-01-16 15:59:02 -0500
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (1.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mAuthor Load (0.5ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+Completed 200 OK in 51ms (Views: 48.4ms | ActiveRecord: 1.8ms | Allocations: 11222)
+
+
+Started GET "/edit/features/" for ::1 at 2020-01-16 15:59:02 -0500
+Processing by Edit::FeaturesController#index as HTML
+  [1m[36mFeature Load (0.8ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE (section_id IS NULL)[0m
+  ↳ app/controllers/edit/features_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.8ms | Allocations: 1065)
+
+
+Started GET "/edit/articles" for ::1 at 2020-01-16 15:59:08 -0500
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (11.9ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+Started GET "/magazines/1" for ::1 at 2020-01-16 15:59:08 -0500
+  [1m[36mAuthor Load (14.8ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by MagazinesController#show as HTML
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  Parameters: {"id"=>"1"}
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mMagazine Load (2.3ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:45:in `set_magazine'
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSection Load (2.2ms)[0m  [1m[34mSELECT id, title, short_title FROM "sections"[0m
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  ↳ app/controllers/magazines_controller.rb:14:in `show'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 24ms (Views: 9.6ms | ActiveRecord: 4.5ms | Allocations: 4650)
+
+
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+Completed 200 OK in 107ms (Views: 75.2ms | ActiveRecord: 27.0ms | Allocations: 14417)
+
+
+Started GET "/edit/features/" for ::1 at 2020-01-16 15:59:08 -0500
+Processing by Edit::FeaturesController#index as HTML
+  [1m[36mFeature Load (0.7ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE (section_id IS NULL)[0m
+  ↳ app/controllers/edit/features_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.7ms | Allocations: 1050)
+
+
+Started GET "/magazines/1" for ::1 at 2020-01-16 15:59:43 -0500
+Processing by MagazinesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMagazine Load (0.8ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:45:in `set_magazine'
+  [1m[36mSection Load (1.7ms)[0m  [1m[34mSELECT id, title, short_title FROM "sections"[0m
+  ↳ app/controllers/magazines_controller.rb:14:in `show'
+Completed 200 OK in 17ms (Views: 8.2ms | ActiveRecord: 2.4ms | Allocations: 1758)
+
+
+Started GET "/edit/articles" for ::1 at 2020-01-16 15:59:45 -0500
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (1.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mAuthor Load (0.9ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.2ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+Completed 200 OK in 110ms (Views: 107.0ms | ActiveRecord: 2.8ms | Allocations: 11216)
+
+
+Started GET "/edit/features/" for ::1 at 2020-01-16 15:59:45 -0500
+Processing by Edit::FeaturesController#index as HTML
+  [1m[36mFeature Load (0.6ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE (section_id IS NULL)[0m
+  ↳ app/controllers/edit/features_controller.rb:8:in `index'
+Completed 200 OK in 10ms (Views: 9.2ms | ActiveRecord: 0.6ms | Allocations: 1050)
+
+
+Started GET "/edit/articles" for ::1 at 2020-01-16 16:00:55 -0500
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (1.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mAuthor Load (2.6ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+Completed 200 OK in 83ms (Views: 76.9ms | ActiveRecord: 4.3ms | Allocations: 11216)
+
+
+Started GET "/magazines/1" for ::1 at 2020-01-16 16:00:55 -0500
+Processing by MagazinesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMagazine Load (1.1ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:45:in `set_magazine'
+  [1m[36mSection Load (3.2ms)[0m  [1m[34mSELECT id, title, short_title FROM "sections"[0m
+  ↳ app/controllers/magazines_controller.rb:14:in `show'
+Completed 200 OK in 16ms (Views: 9.9ms | ActiveRecord: 4.3ms | Allocations: 1755)
+
+
+Started GET "/edit/features/" for ::1 at 2020-01-16 16:00:56 -0500
+Processing by Edit::FeaturesController#index as HTML
+  [1m[36mFeature Load (1.2ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE (section_id IS NULL)[0m
+  ↳ app/controllers/edit/features_controller.rb:8:in `index'
+Completed 200 OK in 8ms (Views: 5.8ms | ActiveRecord: 1.2ms | Allocations: 1050)
+
+
+Started GET "/edit/articles" for ::1 at 2020-01-16 16:01:15 -0500
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (1.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mAuthor Load (1.4ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+Completed 200 OK in 49ms (Views: 45.7ms | ActiveRecord: 2.6ms | Allocations: 11216)
+
+
+Started GET "/edit/features/" for ::1 at 2020-01-16 16:01:15 -0500
+Processing by Edit::FeaturesController#index as HTML
+  [1m[36mFeature Load (0.9ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE (section_id IS NULL)[0m
+  ↳ app/controllers/edit/features_controller.rb:8:in `index'
+Completed 200 OK in 12ms (Views: 10.6ms | ActiveRecord: 0.9ms | Allocations: 1050)
+
+
+Started GET "/edit/sections/1" for ::1 at 2020-01-16 16:01:35 -0500
+Processing by Edit::SectionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSection Load (1.6ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:46:in `set_section'
+  [1m[36mCACHE Section Load (0.0ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:13:in `show'
+  [1m[36mFeature Load (0.5ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE "features"."section_id" = $1[0m  [["section_id", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."section_id" = $1[0m  [["section_id", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mAuthor Load (0.4ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+Completed 200 OK in 82ms (Views: 71.7ms | ActiveRecord: 3.3ms | Allocations: 12192)
+
+
+Started GET "/edit/articles" for ::1 at 2020-01-16 16:02:04 -0500
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (0.7ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mAuthor Load (1.5ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.3ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.2ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+Completed 200 OK in 103ms (Views: 98.9ms | ActiveRecord: 3.0ms | Allocations: 11219)
+
+
+Started GET "/edit/features/" for ::1 at 2020-01-16 16:02:05 -0500
+Processing by Edit::FeaturesController#index as HTML
+  [1m[36mFeature Load (2.1ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE (section_id IS NULL)[0m
+  ↳ app/controllers/edit/features_controller.rb:8:in `index'
+Completed 200 OK in 10ms (Views: 7.6ms | ActiveRecord: 2.1ms | Allocations: 1050)
+
+
+Started GET "/edit/articles" for ::1 at 2020-01-16 16:08:26 -0500
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (5.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+Started GET "/magazines/1" for ::1 at 2020-01-16 16:08:26 -0500
+  [1m[36mAuthor Load (1.9ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+Processing by MagazinesController#show as HTML
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Parameters: {"id"=>"1"}
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mMagazine Load (1.1ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  ↳ app/controllers/magazines_controller.rb:45:in `set_magazine'
+  [1m[36mCACHE Author Load (0.2ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mSection Load (1.7ms)[0m  [1m[34mSELECT id, title, short_title FROM "sections"[0m
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:14:in `show'
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+Completed 200 OK in 33ms (Views: 16.3ms | ActiveRecord: 3.3ms | Allocations: 4709)
+
+
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.2ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+Completed 200 OK in 110ms (Views: 99.0ms | ActiveRecord: 10.2ms | Allocations: 16521)
+
+
+Started GET "/edit/features/" for ::1 at 2020-01-16 16:08:26 -0500
+Processing by Edit::FeaturesController#index as HTML
+  [1m[36mFeature Load (4.0ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE (section_id IS NULL)[0m
+  ↳ app/controllers/edit/features_controller.rb:8:in `index'
+Completed 200 OK in 10ms (Views: 5.5ms | ActiveRecord: 4.0ms | Allocations: 1065)
+
+
+Started GET "/edit/articles" for ::1 at 2020-01-16 16:10:13 -0500
+Started GET "/magazines/1" for ::1 at 2020-01-16 16:10:13 -0500
+Processing by MagazinesController#show as HTML
+  Parameters: {"id"=>"1"}
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (1.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE (static_page = false) ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mMagazine Load (1.2ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:45:in `set_magazine'
+  [1m[36mSection Load (0.8ms)[0m  [1m[34mSELECT id, title, short_title FROM "sections"[0m
+  ↳ app/controllers/magazines_controller.rb:14:in `show'
+Completed 200 OK in 227ms (Views: 27.0ms | ActiveRecord: 102.0ms | Allocations: 27561)
+
+
+  [1m[36mAuthor Load (18.7ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (4.2ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+Completed 200 OK in 215ms (Views: 83.5ms | ActiveRecord: 125.6ms | Allocations: 37494)
+
+
+Started GET "/edit/features/" for ::1 at 2020-01-16 16:10:13 -0500
+Processing by Edit::FeaturesController#index as HTML
+  [1m[36mFeature Load (3.5ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE (section_id IS NULL)[0m
+  ↳ app/controllers/edit/features_controller.rb:8:in `index'
+Completed 200 OK in 26ms (Views: 9.7ms | ActiveRecord: 10.3ms | Allocations: 5326)
+
+
+Started GET "/edit/pages" for ::1 at 2020-01-16 16:10:24 -0500
+Processing by Edit::PagesController#index as HTML
+  [1m[36mArticle Load (0.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE (static_page = true)[0m
+  ↳ app/controllers/edit/pages_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.6ms | Allocations: 1502)
+
+
+Started GET "/edit/articles" for ::1 at 2020-01-16 16:12:25 -0500
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (1.7ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE (static_page = false) ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mAuthor Load (0.5ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Started GET "/magazines/1" for ::1 at 2020-01-16 16:12:25 -0500
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by MagazinesController#show as HTML
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  Parameters: {"id"=>"1"}
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMagazine Load (2.1ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:45:in `set_magazine'
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+Completed 200 OK in 107ms (Views: 104.4ms | ActiveRecord: 2.5ms | Allocations: 10769)
+
+
+  [1m[36mSection Load (7.5ms)[0m  [1m[34mSELECT id, title, short_title FROM "sections"[0m
+  ↳ app/controllers/magazines_controller.rb:14:in `show'
+Completed 200 OK in 47ms (Views: 12.0ms | ActiveRecord: 9.6ms | Allocations: 5727)
+
+
+Started GET "/edit/features/" for ::1 at 2020-01-16 16:12:26 -0500
+Processing by Edit::FeaturesController#index as HTML
+  [1m[36mFeature Load (1.1ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE (section_id IS NULL)[0m
+  ↳ app/controllers/edit/features_controller.rb:8:in `index'
+Completed 200 OK in 8ms (Views: 6.8ms | ActiveRecord: 1.1ms | Allocations: 1050)
+
+
+Started GET "/edit/articles" for ::1 at 2020-01-16 16:13:09 -0500
+Processing by Edit::ArticlesController#index as HTML
+  [1m[36mArticle Load (0.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE (static_page = false) ORDER BY id DESC[0m
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+Started GET "/magazines/1" for ::1 at 2020-01-16 16:13:09 -0500
+Processing by MagazinesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMagazine Load (1.0ms)[0m  [1m[34mSELECT "magazines".* FROM "magazines" WHERE "magazines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/magazines_controller.rb:45:in `set_magazine'
+  [1m[36mSection Load (5.2ms)[0m  [1m[34mSELECT id, title, short_title FROM "sections"[0m
+  ↳ app/controllers/magazines_controller.rb:14:in `show'
+Completed 200 OK in 15ms (Views: 5.1ms | ActiveRecord: 6.2ms | Allocations: 1796)
+
+
+  [1m[36mAuthor Load (26.9ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.4ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/articles_controller.rb:12:in `index'
+Completed 200 OK in 110ms (Views: 80.9ms | ActiveRecord: 28.3ms | Allocations: 11997)
+
+
+Started GET "/edit/features/" for ::1 at 2020-01-16 16:13:09 -0500
+Processing by Edit::FeaturesController#index as HTML
+  [1m[36mFeature Load (0.6ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE (section_id IS NULL)[0m
+  ↳ app/controllers/edit/features_controller.rb:8:in `index'
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.6ms | Allocations: 1050)
+
+
+Started GET "/edit/sections/1" for ::1 at 2020-01-16 16:13:28 -0500
+Processing by Edit::SectionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSection Load (2.0ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:46:in `set_section'
+  [1m[36mCACHE Section Load (0.0ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:13:in `show'
+  [1m[36mFeature Load (0.3ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE "features"."section_id" = $1[0m  [["section_id", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mArticle Load (0.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."section_id" = $1[0m  [["section_id", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mAuthor Load (0.5ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.2ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+Completed 200 OK in 106ms (Views: 91.5ms | ActiveRecord: 4.2ms | Allocations: 12194)
+
+
+Started GET "/edit/sections/2" for ::1 at 2020-01-16 16:13:35 -0500
+Processing by Edit::SectionsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSection Load (0.5ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:46:in `set_section'
+  [1m[36mCACHE Section Load (0.0ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:13:in `show'
+  [1m[36mFeature Load (0.3ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE "features"."section_id" = $1[0m  [["section_id", 2]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mArticle Load (8.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."section_id" = $1[0m  [["section_id", 2]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mAuthor Load (4.9ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+Completed 200 OK in 29ms (Views: 11.2ms | ActiveRecord: 13.9ms | Allocations: 4224)
+
+
+Started GET "/edit/sections/1" for ::1 at 2020-01-16 16:13:38 -0500
+Processing by Edit::SectionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSection Load (0.6ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:46:in `set_section'
+  [1m[36mCACHE Section Load (0.0ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:13:in `show'
+  [1m[36mFeature Load (0.6ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE "features"."section_id" = $1[0m  [["section_id", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."section_id" = $1[0m  [["section_id", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mAuthor Load (4.9ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+  [1m[36mCACHE Author Load (0.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/edit/sections_controller.rb:15:in `show'
+Completed 200 OK in 68ms (Views: 55.8ms | ActiveRecord: 6.8ms | Allocations: 11535)
+
+

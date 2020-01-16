@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :magazines
 
   namespace :edit do
+    resources :pages, only: :index
     resources :articles
     resources :sections do
       resources :articles, only: :index

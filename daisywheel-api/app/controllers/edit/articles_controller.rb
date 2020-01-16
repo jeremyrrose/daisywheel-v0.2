@@ -4,9 +4,9 @@ class Edit::ArticlesController < ApplicationController
   # GET /articles
   def index
     if params[:section_id]
-      @articles = Article.where("section_id = ?",params[:section_id]).order("id DESC")
+      @articles = Article.where("section_id = ?",params[:section_id]).where("static_page = false").order("id DESC")
     else
-      @articles = Article.order("id DESC")
+      @articles = Article.where("static_page = false").order("id DESC")
     end
 
     render json: @articles, :include => {:author => {:only => :name}}
@@ -51,6 +51,6 @@ class Edit::ArticlesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def article_params
-      params.require(:article).permit(:author_id, :section_id, :title, :dek, :content, :image, :caption, :credit, :url, :published, :static)
+      params.require(:article).permit(:author_id, :section_id, :title, :dek, :content, :image, :caption, :credit, :url, :published, :static_page)
     end
 end

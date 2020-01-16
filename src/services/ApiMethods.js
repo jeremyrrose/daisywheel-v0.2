@@ -37,6 +37,16 @@ export const getArticle = async (id) => {
 
 export const createArticle = async (articleData) => {
   try {
+      if (articleData.section_id == 0) { 
+        delete articleData.section_id; 
+        articleData.static_page = true 
+      } else {
+        articleData.static_page = false
+      }
+      if (articleData.author_id == 0) { 
+        delete articleData.author_id;
+      }
+      console.log(articleData);
       const response = await Api.post('/edit/articles', articleData);
       return response
   } catch (error) {
@@ -46,6 +56,15 @@ export const createArticle = async (articleData) => {
 
 export const updateArticle = async (id, articleData) => {
   try {
+    if (articleData.section_id == 0) { 
+      delete articleData.section_id; 
+      articleData.static_page = true 
+    } else {
+      articleData.static_page = false
+    }
+    if (articleData.author_id == 0) { 
+      delete articleData.author_id;
+    }
     const response = await Api.put(`/edit/articles/${id}`, articleData);
     return response
   } catch (error) {
@@ -55,7 +74,7 @@ export const updateArticle = async (id, articleData) => {
 
 // article list methods
 export const getArticlesToEdit = async (section) => {
-  console.log(section);
+  console.log(`section: ${section}`);
   const url = section ? `/edit/sections/${section}/articles` : `/edit/articles`
   try {
     const resp = await Api.get(url)
