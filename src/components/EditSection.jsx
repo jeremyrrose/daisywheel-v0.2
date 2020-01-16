@@ -8,7 +8,8 @@ class EditSection extends React.Component {
         super(props)
         this.state = {
             section: {},
-            feature_ids: []
+            feature_ids: [],
+            all: true
         }
     }
 
@@ -31,6 +32,9 @@ class EditSection extends React.Component {
     }
 
     featureToggle = async (id) => {
+        if (this.state.section.top_story == id) {
+            return false
+        }
         if (!this.state.feature_ids.includes(id)) {
             await addFeatured(this.props.match.params.id, id);
         } else {
@@ -40,13 +44,39 @@ class EditSection extends React.Component {
         this.setSection(this.props.match.params.id);
     }
 
+    allToggle = (bool) => {
+        if (bool != this.state.all) {
+            this.setState(state => ({ all: !state.all }))
+        }
+    }
+
     render() {
         return (
-            <div className="sectionEdit">
-                <h2>{this.state.section ? this.state.section.title : null }</h2>
+            <div className="sectionPage">
+                <div className="sectionEdit">
+                    <div className="sectionLeft">
+                        <h2><span className="thin">Section: </span>{this.state.section ? this.state.section.title : null }</h2>
+                        <div>
+                            View articles: 
+                            <button className={this.state.all && `on`} onClick={() => this.allToggle(true)}>All</button>
+                            <button className={this.state.all || `on`} onClick={() => this.allToggle(false)}>Featured Only</button></div>
+                    </div>
+                    <div className="sectionRight">
+                        <div>
+                            <label for="section">Choose a section:</label>
+                            <select name="section">
+                                <option>Stupid stories</option>
+                            </select>
+                        </div>
+                        <input type="search" placeholder={`Search within ${this.state.section ? this.state.section.title : null }`}></input>
+                    </div>
+                </div>
                 <Articles 
                     sectionId={this.props.match.params.id}
-                    articles={this.state.section && this.state.section.articles}
+                    articles={this.state.section && this.state.all ? 
+                        this.state.section.articles :
+                        this.state.section.articles.filter(article => article.id == this.state.section.top_story || this.state.feature_ids.includes(article.id))
+                    }
                     top_story={this.state.section && this.state.section.top_story}
                     feature_ids={this.state.section && this.state.feature_ids}
                     topToggle={this.topToggle}

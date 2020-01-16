@@ -46,7 +46,6 @@ class Articles extends React.Component {
 
         return (
             <div className="articleList">
-                <h2>Articles</h2>
                 {this.articleCards()}
             </div>
         )

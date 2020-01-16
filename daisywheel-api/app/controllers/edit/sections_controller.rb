@@ -11,6 +11,7 @@ class Edit::SectionsController < ApplicationController
   # GET /sections/1
   def show
     @section = Section.find(params[:id])
+
     render json: @section, include: [ :features, :articles => {:include => {:author => {:only => :name}}} ]
   end
 
