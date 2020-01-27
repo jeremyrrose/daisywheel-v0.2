@@ -81,6 +81,27 @@
     align-self: flex-start;
 }
 
+.wysiwygControls {
+    align-self: flex-end;
+    text-align: right;
+}
+
+.wysiwygControls button {
+    border: 0px;
+    background-color: #efefef;
+    color: var(--primary-color);
+    margin: 0px 0px 8px 12px;
+    cursor: pointer;
+}
+
+.wysiwygControls button.on {
+    background-color: var(--soft-primary-color);
+}
+
+.articleForm .wysiwygControls button span {
+    pointer-events: none;
+}
+
 .articleForm #content {
     font-family: 'Roboto', sans-serif;
     text-align: left;

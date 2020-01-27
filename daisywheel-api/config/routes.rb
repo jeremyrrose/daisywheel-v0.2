@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   resources :articles, only: [:index, :show]
   resources :magazines
 
+  namespace :front do
+    resources :magazines, only: :index
+  end
+
   namespace :edit do
     resources :pages, only: :index
     resources :articles

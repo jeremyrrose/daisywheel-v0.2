@@ -39,7 +39,8 @@
 
 
 /* NEW ENTRIES */
-@import url('https://fonts.googleapis.com/css?family=EB+Garamond|Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css?family=EB+Garamond|Poly|Cormorant+Garamond&display=swap');
+
 
 body {
   font-family: 'Roboto', sans-serif;
@@ -47,17 +48,17 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'EB Garamond', serif;
+  font-family: var(--header-font), serif;
   letter-spacing: .06em;
 }
 
 :root {
-  --primary-color: #523F70;
-  --soft-primary-color: #D1C8E1;
+  /* --primary-color: #523F70; */
+  /* --soft-primary-color: #D1C8E1; */
   --text-color: #0a0a0a;
   --background-color: #ffffff;
-  --secondary-color: #6969B3;
-  --highlight-color: #98C1D9;
+  /* --secondary-color: #6969B3; */
+  /* --highlight-color: #98C1D9; */
   --body-font: 'Roboto', sans-serif;
-  --header-font: 'EB Garamond', serif;
+  --header-font: 'Poly', serif;
 }

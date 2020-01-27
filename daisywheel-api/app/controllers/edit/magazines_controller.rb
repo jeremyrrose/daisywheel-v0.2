@@ -11,7 +11,14 @@ class Edit::MagazinesController < ApplicationController
   # GET /magazines/1
   def show
     @sections = Section.all.select("id, title, short_title")
-    render json: { magazine: @magazine, sections: @sections }
+    @pages_array = []
+    if @magazine.pages_order[0]
+      @magazine.pages_order.each do |page|
+        article = Article.find(page)
+        @pages_array.push({title: article.title, id:article.id})
+      end
+    end
+    render json: { magazine: @magazine, sections: @sections, pages: @pages_array }
   end
 
   # POST /magazines
@@ -42,6 +49,6 @@ class Edit::MagazinesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def magazine_params
-      params.require(:magazine).permit(:title, :description, :header_image, :color_1, :color_2, :color_3, :color_4, :font_1, :font_2, :top_story)
+      params.require(:magazine).permit(:title, :description, :header_image, :color_1, :color_2, :color_3, :color_4, :font_1, :font_2, :top_story, pages_order: [])
     end
 end

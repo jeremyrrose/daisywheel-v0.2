@@ -47,6 +47,6 @@ class MagazinesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def magazine_params
-      params.require(:magazine).permit(:title, :description, :header_image, :color_1, :color_2, :color_3, :color_4, :font_1, :font_2)
+      params.require(:magazine).permit(:title, :description, :pages_order, :header_image, :color_1, :color_2, :color_3, :color_4, :font_1, :font_2, :pages_order)
     end
 end

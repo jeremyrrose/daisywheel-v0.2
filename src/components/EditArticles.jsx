@@ -1,5 +1,5 @@
 import React from 'react'
-import { getArticlesToEdit, getFeatures, addFeatured, removeFeatured, updateMagazineTopStory } from '../services/ApiMethods.js'
+import { getArticlesToEdit, getFeatures, addFeatured, removeFeatured, updateMagazine } from '../services/ApiMethods.js'
 import Articles from './shared/Articles.jsx'
 
 class EditArticles extends React.Component {
@@ -37,9 +37,9 @@ class EditArticles extends React.Component {
     }
 
     topToggle = async (id) => {
-        console.log('halp')
-        const newSectionInfo = await updateMagazineTopStory(id)
+        const newSectionInfo = await updateMagazine({"top_story": id})
         this.setState({top_story: id});
+        this.props.refresh();
     }
 
     featureToggle = async (id) => {
@@ -67,13 +67,7 @@ class EditArticles extends React.Component {
                         <button className={this.state.all || `on`} onClick={() => this.allToggle(false)}>Featured Only</button></div>
                 </div>
                 <div className="sectionRight">
-                    <div>
-                        <label for="section">Choose a section:</label>
-                        <select name="section">
-                            <option>Stupid stories</option>
-                        </select>
-                    </div>
-                    <input type="search" placeholder={`Search within ${this.state.section ? this.state.section.title : null }`}></input>
+                    <input type="search" placeholder={`Search within ${this.state.section ? this.state.section.title : 'articles' }`}></input>
                 </div>
             </div>
             <Articles 

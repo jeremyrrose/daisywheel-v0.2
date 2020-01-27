@@ -9,43 +9,37 @@ const Nav = (props) => {
             <NavLink
             to="/new/article" 
             activeClassName="selectedLink" >
-                <button>Compose</button> <img src={navArrow} />
+                <button>Compose</button> <img src={navArrow} alt="" />
             </NavLink>
 
             <NavLink
             to="/edit/articles"
             activeClassName="selectedLink" >
-                <button>Edit</button> <img src={navArrow} />
+                <button>Edit</button> <img src={navArrow} alt="" />
             </NavLink>
 
             <NavLink
             to="/edit/sections"
             activeClassName="selectedLink" >
-                <button>Sections</button> <img src={navArrow} />
+                <button>Sections</button> <img src={navArrow} alt="" />
             </NavLink>
 
             <NavLink
             to="/edit/pages"
             activeClassName="selectedLink" >
-                <button>Pages</button> <img src={navArrow} />
-            </NavLink>
-
-            <NavLink
-            to="/edit/menus"
-            activeClassName="selectedLink" >
-                <button>Menus</button> <img src={navArrow} />
+                <button>Pages</button> <img src={navArrow} alt="" />
             </NavLink>
 
             <NavLink
             to="/edit/configuration"
             activeClassName="selectedLink" >
-                <button>Configuration</button> <img src={navArrow} />
+                <button>Configuration</button> <img src={navArrow} alt="" />
             </NavLink>
 
             <NavLink
             to="/edit/users"
             activeClassName="selectedLink" >
-                <button>Users</button> <img src={navArrow} />
+                <button>Users</button> <img src={navArrow} alt="" />
             </NavLink>
         </div>
     )

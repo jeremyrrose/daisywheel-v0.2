@@ -8,16 +8,17 @@ export const getMagazine = async () => {
     console.log(resp.data)
     let magazine = resp.data.magazine;
     magazine.sections = resp.data.sections;
+    magazine.pages = resp.data.pages;
     return magazine;
   } catch(error) {
     console.error(error)
   }
 }
 
-export const updateMagazineTopStory = async (id) => {
+export const updateMagazine = async (magData) => {
   console.log('halp2')
   try {
-    const resp = await Api.put(`/edit/magazines/1`, {"top_story": id})
+    const resp = await Api.put(`/edit/magazines/1`, magData)
     return resp;
   } catch (error) {
     throw error
@@ -96,6 +97,15 @@ export const getPages = async () => {
 }
 
 // section methods
+export const addNewSection = async (sectionData) => {
+  try {
+    const resp = await Api.post(`/edit/sections`, sectionData)
+    return resp
+  } catch (error) {
+    throw error
+  }
+}
+
 export const getSectionToEdit = async (id) => {
   try {
     const resp = await Api.get(`/edit/sections/${id}`)

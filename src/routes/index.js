@@ -6,8 +6,10 @@ import NewArticle from '../components/NewArticle.jsx'
 import EditArticle from '../components/EditArticle.jsx'
 import EditSection from '../components/EditSection.jsx'
 import EditSections from '../components/EditSections.jsx'
+import EditPages from '../components/EditPages.jsx'
+import Configuration from '../components/Configuration.jsx'
 
-const Routes = ({ magazine }) => (
+const Routes = ({ magazine, refresh }) => (
     <BrowserRouter>
         <div className="mainContainer">
             <Nav />
@@ -30,17 +32,27 @@ const Routes = ({ magazine }) => (
                 <Route
                 exact
                 path="/edit/articles/"
-                render={props => (<EditArticles {...props} magazine={magazine} />)}
+                render={props => (<EditArticles {...props} magazine={magazine} refresh={refresh} />)}
                 />
                 <Route
                 exact
                 path="/edit/sections/"
-                render={props => (<EditSections {...props} magazine={magazine} />)}
+                render={props => (<EditSections {...props} magazine={magazine} refresh={refresh} />)}
                 />
                 <Route
                 exact
                 path="/edit/sections/:id"
                 render={props => (<EditSection {...props} magazine={magazine} />)}
+                />
+                <Route
+                exact
+                path="/edit/pages/"
+                render={props => (<EditPages {...props} magazine={magazine} refresh={refresh} />)}
+                />
+                <Route
+                exact
+                path="/edit/configuration"
+                render={props => (<Configuration {...props} magazine={magazine} refresh={refresh} />)}
                 />
             </Switch>
         </div>
