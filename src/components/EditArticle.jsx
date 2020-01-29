@@ -14,20 +14,27 @@ class EditArticle extends React.Component {
       }
     
     getArticle = async (id) => {
-        fetch(`http://localhost:3000/articles/${id}`)
+        fetch(`http://localhost:3000/edit/articles/${id}`)
         .then(response => response.json())
-        .then(({
-            id,
-            title,
-            dek,
-            content,
-            caption,
-            credit,
-            url,
-            published,
-            updated_at,
-            section_id,
-            author_id
+        .then(response => {
+            console.log(response);
+            return response;
+        })
+        .then(({ 
+            article: {
+                id,
+                title,
+                dek,
+                content,
+                caption,
+                credit,
+                url,
+                published,
+                updated_at,
+                section_id,
+                author_id,
+            }, 
+            image_url
         }) => this.setState({
                 id,
                 title,
@@ -39,7 +46,8 @@ class EditArticle extends React.Component {
                 published,
                 updated_at,
                 section_id,
-                author_id
+                author_id,
+                image_url
             }))
       }
       
@@ -62,19 +70,39 @@ class EditArticle extends React.Component {
         this.setState({ [name]: elem.innerHTML })
     }
 
+    onDrop = (picture) => {
+        console.log(picture)
+        this.setState({
+            image: picture[0]
+        })
+    }
+
+    photoDisplay = (e) => {
+        e.preventDefault();
+        console.log(e)
+        this.setState({image_url: null});
+    }
+
     buildArticle = (e) => {
         e.preventDefault();
-        const articleData = {
-            title: this.state.title,
-            dek: this.state.dek,
-            content: this.state.content,
-            // caption: this.state.caption,
-            // credit: this.state.credit,
-            // url: this.state.url,
-            published: this.state.published,
-            // updated_at: this.state.updated_at,
-            section_id: this.state.section_id,
-            author_id: this.state.author_id
+        // const articleData = {
+        //     title: this.state.title,
+        //     dek: this.state.dek,
+        //     content: this.state.content,
+        //     image: this.state.picture && this.state.picture[0],
+        //     // caption: this.state.caption,
+        //     // credit: this.state.credit,
+        //     // url: this.state.url,
+        //     published: this.state.published,
+        //     // updated_at: this.state.updated_at,
+        //     section_id: this.state.section_id,
+        //     author_id: this.state.author_id
+        // }
+        const stateInfo = {...this.state};
+        console.log(stateInfo);
+        let articleData = new FormData();
+        for(var name in stateInfo){
+            stateInfo[name] && articleData.append(name, stateInfo[name]);
         }
         updateArticle(this.props.match.params.id, articleData)
         .then(this.props.history.push('/edit/articles'));
@@ -113,7 +141,10 @@ class EditArticle extends React.Component {
                 onChange={this.changeHandler}
                 toggle={this.toggler}
                 onSubmit={this.buildArticle}
+                onDrop={this.onDrop}
+                photoDisplay={this.photoDisplay}
                 wysiwygHandler={this.wysiwygHandler}
+                image_url={this.state.image_url && this.state.image_url}
             />
         )
     }
