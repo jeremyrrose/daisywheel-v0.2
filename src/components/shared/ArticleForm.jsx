@@ -60,11 +60,14 @@ const ArticleForm = ({
     }
 
     const heroHolder = image_url ?         
-        <><img src={image_url} className="uploadPicture" />            
+        <>
+        <div className="articleCardImage">
+            <img src={image_url} className="uploadPicture" />
+        </div>           
         <button type="button" name="changePhoto" onClick={(e) => photoDisplay(e)}>Change photo</button> </> : 
         <ImageUploader
         withPreview={true}
-        buttonText='Choose file'
+        buttonText='Choose an image file'
         onChange={e => onDrop(e)}
         imgExtension={['.jpg', '.gif', '.png', '.gif']}
         maxFileSize={5242880}
@@ -123,8 +126,10 @@ const ArticleForm = ({
                     <button type="button" name="underline" onClick={(e) => styler(e)}><span><u>u</u></span></button>
                     <button type="button" name="link" onClick={(e) => linker(e)}><span>link</span></button>
                 </div>
+                <div>
                 <label for="content">Article body</label>
                 <div id="content" contentEditable="true" onClick={() => buttonState()} onBlur={() => wysiwygHandler('content')} dangerouslySetInnerHTML={{__html: content}} />
+                </div>
             </div>
             <div className="submitRow">
                 <button name="draft" className={published ? null : 'checkOn'} onClick={(e) => toggle(e,'draft')}>Draft <img src={checkMark} /></button>

@@ -79,10 +79,20 @@
      flex-direction: column-reverse;
 }
 
+.heroLeft button {
+    margin: 12px 0px 0px 0px;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    font-weight: bold;
+    align-self: flex-end;
+}
+
 .heroLeft {
     max-width: 300px;
     padding: 16px;
     margin-right: 30px;
+    display: flex;
+    flex-direction: column;
 }
 
 .heroLeft img { 
