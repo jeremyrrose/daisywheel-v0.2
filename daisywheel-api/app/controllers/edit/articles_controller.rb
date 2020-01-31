@@ -1,12 +1,19 @@
 class Edit::ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :update, :destroy]
+  include Rails.application.routes.url_helpers
 
   # GET /articles
   def index
     if params[:section_id]
-      @articles = Article.where("section_id = ?",params[:section_id]).where("static_page = false").order("id DESC")
+      @articles = Article.with_attached_image.where("section_id = ?",params[:section_id]).where("static_page = false").order("id DESC")
     else
-      @articles = Article.where("static_page = false").order("id DESC")
+      @articles = Article.with_attached_image.where("static_page = false").order("id DESC")
+    end
+
+    @articles.each do |article|
+      if article.image.attached?
+        article.write_attribute(:image_url, url_for(article.image))
+      end
     end
 
     render json: @articles, :include => {:author => {:only => :name}}
@@ -14,7 +21,13 @@ class Edit::ArticlesController < ApplicationController
 
   # GET /articles/1
   def show
-    render json: @article
+    if @article.image.attached?
+      @image_url = url_for(@article.image)
+    else
+      @image_url = nil
+    end
+    # render json: { article: @article, image_url: @image_url} 
+    render json: { article: @article, image_url: @image_url }
   end
 
   # POST /articles
@@ -31,6 +44,12 @@ class Edit::ArticlesController < ApplicationController
 
   # PATCH/PUT /articles/1
   def update
+    puts @article
+    puts params
+    if params[:image]
+      puts "attempting to attach"
+      @article.image.attach(params[:image])
+    end
     if @article.update(article_params)
       render json: @article
     else
@@ -46,11 +65,11 @@ class Edit::ArticlesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
-      @article = Article.find(params[:id])
+      @article = Article.with_attached_image.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
     def article_params
-      params.require(:article).permit(:author_id, :section_id, :title, :dek, :content, :image, :caption, :credit, :url, :published, :static_page)
+      params.permit(:author_id, :section_id, :title, :dek, :content, :image, :caption, :credit, :url, :published, :static_page, :hero_image)
     end
 end

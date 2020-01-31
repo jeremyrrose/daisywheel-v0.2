@@ -1,4 +1,5 @@
 import Api from './ApiConfig'
+import Axios from 'axios'
 // const apiKey = `api_key=${TMDB_API_KEY}`
 
 // configuration methods

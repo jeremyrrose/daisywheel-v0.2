@@ -81,8 +81,8 @@ class EditSection extends React.Component {
                 <Articles 
                     sectionId={this.props.match.params.id}
                     articles={this.state.section && this.state.all ? 
-                        this.state.section.articles :
-                        this.state.section.articles.filter(article => article.id == this.state.section.top_story || this.state.feature_ids.includes(article.id))
+                        this.state.section.article_list :
+                        this.state.section.article_list.filter(article => article.id == this.state.section.top_story || this.state.feature_ids.includes(article.id))
                     }
                     top_story={this.state.section && this.state.section.top_story}
                     feature_ids={this.state.section && this.state.feature_ids}

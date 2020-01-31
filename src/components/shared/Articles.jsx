@@ -29,7 +29,7 @@ class Articles extends React.Component {
                 isTop={this.props.top_story === article.id}
                 featured={this.props.feature_ids.includes(article.id)}
                 articleId={article.id}
-                image={article.image}
+                image_url={article.image_url}
                 title={article.title}
                 dek={article.dek}
                 author={article.author ? article.author.name : `Staff`}

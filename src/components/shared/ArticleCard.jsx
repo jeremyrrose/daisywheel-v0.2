@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import checkMark from '../../images/checkMark.svg'
 import '../../styles/ArticleCard.css'
 
-const ArticleCard = ({image, title, dek, author, date, articleId, published, isTop, featured, topToggle, featureToggle}) => {
+const ArticleCard = ({image_url, title, dek, author, date, articleId, published, isTop, featured, topToggle, featureToggle}) => {
     const toggleButtons = (<>
         <button className={`top${isTop ? " on" : ""}`} onClick={() => topToggle(articleId)}>Top Story <img src={checkMark} /></button>
         <button className={`featured${featured ? " on" : ""}`} onClick={() => featureToggle(articleId)}>Featured <img src={checkMark} /></button>
@@ -11,7 +11,9 @@ const ArticleCard = ({image, title, dek, author, date, articleId, published, isT
 
     return (
         <div className="articleCard">
-            <img src={image} />
+            <div className="articleCardImage">
+                <img src={image_url} />
+            </div>
             <div className="articleCardInfo">
                 <h3>{title}</h3>
                 <p className="dek">{dek}</p>
