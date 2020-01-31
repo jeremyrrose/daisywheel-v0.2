@@ -8,6 +8,22 @@
     position: relative;
 }
 
+.articleCardImage {
+    width: 266px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.articleCardImage img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.articleCardInfo {
+    margin-left: 20px;
+}
+
 .articleCard h3 {
     font-size: 26px;
     margin: 0;

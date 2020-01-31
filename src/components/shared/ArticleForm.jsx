@@ -1,4 +1,5 @@
 import React from 'react';
+import ImageUploader from 'react-images-upload';
 import '../../styles/ArticleForm.css'
 import checkMark from '../../images/checkMark.svg'
 
@@ -19,6 +20,9 @@ const ArticleForm = ({
     onChange,
     toggle,
     onSubmit,
+    onDrop,
+    photoDisplay,
+    image_url,
     wysiwygHandler
 }) => {
 
@@ -55,6 +59,20 @@ const ArticleForm = ({
         document.queryCommandState('underline') ? underlineButton.className = "on" : underlineButton.className="";
     }
 
+    const heroHolder = image_url ?         
+        <>
+        <div className="articleCardImage">
+            <img src={image_url} className="uploadPicture" />
+        </div>           
+        <button type="button" name="changePhoto" onClick={(e) => photoDisplay(e)}>Change photo</button> </> : 
+        <ImageUploader
+        withPreview={true}
+        buttonText='Choose an image file'
+        onChange={e => onDrop(e)}
+        imgExtension={['.jpg', '.gif', '.png', '.gif']}
+        maxFileSize={5242880}
+        />
+
     return(
         <form className="articleForm" onSubmit={e => onSubmit(e)} >
             <div className="row1">
@@ -86,9 +104,9 @@ const ArticleForm = ({
                 <input name="updated_at" type="text" value={updated_at} onChange={(e) => onChange(e)} />
             </div>
             <div className="heroRow">
-                <div>
+                <div className="heroLeft">
                     <label>Hero image</label>
-                    <img src="broken.jpg" alt={caption} />
+                    {heroHolder}
                 </div>
                 <div className="heroColumn">
                     <div>
@@ -99,7 +117,6 @@ const ArticleForm = ({
                         <label for="credit">Photo credit</label>
                         <input name="credit" type="text" value={credit} onChange={(e) => onChange(e)} />
                     </div>
-                    <button name="changePhoto">Change photo</button>
                 </div>
             </div>
             <div>
@@ -109,8 +126,10 @@ const ArticleForm = ({
                     <button type="button" name="underline" onClick={(e) => styler(e)}><span><u>u</u></span></button>
                     <button type="button" name="link" onClick={(e) => linker(e)}><span>link</span></button>
                 </div>
+                <div>
                 <label for="content">Article body</label>
                 <div id="content" contentEditable="true" onClick={() => buttonState()} onBlur={() => wysiwygHandler('content')} dangerouslySetInnerHTML={{__html: content}} />
+                </div>
             </div>
             <div className="submitRow">
                 <button name="draft" className={published ? null : 'checkOn'} onClick={(e) => toggle(e,'draft')}>Draft <img src={checkMark} /></button>

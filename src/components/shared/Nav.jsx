@@ -36,11 +36,11 @@ const Nav = (props) => {
                 <button>Configuration</button> <img src={navArrow} alt="" />
             </NavLink>
 
-            <NavLink
+            {/* <NavLink
             to="/edit/users"
             activeClassName="selectedLink" >
                 <button>Users</button> <img src={navArrow} alt="" />
-            </NavLink>
+            </NavLink> */}
         </div>
     )
 }

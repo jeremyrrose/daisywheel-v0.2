@@ -1,5 +1,6 @@
 class Edit::SectionsController < ApplicationController
   before_action :set_section, only: [:show, :update, :destroy]
+  include Rails.application.routes.url_helpers
 
   # GET /sections
   def index
@@ -11,8 +12,20 @@ class Edit::SectionsController < ApplicationController
   # GET /sections/1
   def show
     @section = Section.find(params[:id])
+    @articles = Article.with_attached_image.where("section_id = ?",params[:id]).where("static_page = false").order("id DESC")
 
-    render json: @section, include: [ :features, :articles => {:include => {:author => {:only => :name}}} ]
+    @articles.each do |article|
+      if article.image.attached?
+        article.write_attribute(:image_url, url_for(article.image))
+      end
+      if article.author
+        article.write_attribute(:author, {name: article.author.name})
+      end
+    end
+
+    @section.write_attribute(:article_list, @articles)
+
+    render json: @section, include: [ :features ]
   end
 
   # POST /sections

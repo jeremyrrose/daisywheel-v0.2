@@ -1,5 +1,6 @@
 class Front::MagazinesController < ApplicationController
     before_action :set_magazine, only: [:show, :update, :destroy]
+    include Rails.application.routes.url_helpers
   
     # GET /magazines
     def index
@@ -47,13 +48,19 @@ class Front::MagazinesController < ApplicationController
       @used_ids = []
 
       @top_articles = [ 
-        Article.find(@magazine.top_story)
+        Article.with_attached_image.find(@magazine.top_story)
         ]
       
       @top_feature_ids = Feature.where("section_id IS NULL").limit(3)
         if @top_feature_ids
-            @top_feature_ids.each { |feature| @top_articles.push(Article.select(:id,:url,:title,:dek,:image,:author_id).find(feature.article_id)) }
+            @top_feature_ids.each { |feature| @top_articles.push(Article.select(:id,:url,:title,:dek,:author_id).find(feature.article_id)) }
         end
+
+      @top_articles.each do |article|
+        if article.image.attached?
+          article.write_attribute(:image_url, url_for(article.image))
+        end
+      end
 
       @top_section = {
           title: "Top Stories",
@@ -66,7 +73,7 @@ class Front::MagazinesController < ApplicationController
       @latest = {
           title: "Latest Stories",
           type: "list",
-          articles: Article.select(:id,:url,:title,:dek,:image,:author_id).where("published = true").limit(8)
+          articles: Article.select(:id,:url,:title,:dek,:author_id).where("published = true").limit(8)
       }
 
       @page_sections.push(@latest)
@@ -79,7 +86,12 @@ class Front::MagazinesController < ApplicationController
         end
         @feature_ids = Feature.where("section_id = ?",section.id).limit(3)
         if @feature_ids
-            @feature_ids.each { |feature| @featured.push(Article.select(:id,:url,:title,:dek,:image, :author_id).find(feature.article_id)) }
+            @feature_ids.each { |feature| @featured.push(Article.select(:id,:url,:title,:dek,:author_id).find(feature.article_id)) }
+        end
+        @featured.each do |article|
+          if article.image.attached?
+            article.write_attribute(:image_url, url_for(article.image))
+          end
         end
         @section_info = {
             title: section.title,

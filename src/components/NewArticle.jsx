@@ -13,22 +13,36 @@ class NewArticle extends React.Component {
     componentDidMount = async () => {
       }
 
+    onDrop = (picture) => {
+        console.log(picture)
+        this.setState({
+            image: picture[0]
+        })
+    }
+
+
     buildArticle = (e) => {
         e.preventDefault();
-        const articleData = {
-            title: this.state.title,
-            dek: this.state.dek,
-            content: this.state.content,
-            // caption: this.state.caption,
-            // credit: this.state.credit,
-            // url: this.state.url,
-            published: this.state.published,
-            // updated_at: this.state.updated_at,
-            section_id: this.state.section_id,
-            author_id: this.state.author_id
+        // const articleData = {
+        //     title: this.state.title,
+        //     dek: this.state.dek,
+        //     content: this.state.content,
+        //     // caption: this.state.caption,
+        //     // credit: this.state.credit,
+        //     // url: this.state.url,
+        //     published: this.state.published,
+        //     // updated_at: this.state.updated_at,
+        //     section_id: this.state.section_id,
+        //     author_id: this.state.author_id
+        // }
+        const stateInfo = {...this.state};
+        console.log(stateInfo);
+        let articleData = new FormData();
+        for(var name in stateInfo) {
+            stateInfo[name] && articleData.append(name, stateInfo[name]);
         }
         createArticle(articleData)
-        .then(this.props.history.push('/edit/articles'));;
+        .then(this.props.history.push('/edit/articles'));
     }
 
     toggler = (e, componentName) => {
@@ -81,6 +95,7 @@ class NewArticle extends React.Component {
                 sections={this.props.magazine.sections}
                 author_id={author_id}
                 onChange={this.changeHandler}
+                onDrop={this.onDrop}
                 toggle={this.toggler}
                 onSubmit={this.buildArticle}
                 wysiwygHandler={this.wysiwygHandler}
